@@ -1,0 +1,16 @@
+{
+  "name": "2e2_testing",
+  "version": "0.0.1",
+  "description": "E2E testing for the application using the Cypress framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^10.11.0",
+    "@testing-library/cypress": "8.0.7",
+    "@testing-library/dom": "8.17.1"
+  }
+}
