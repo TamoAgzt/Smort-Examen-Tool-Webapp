@@ -1,1 +1,38 @@
-<p>login works!</p>
+<form>
+  <div class="custom-form">
+    <div class="form-left">
+      <label for="Email">Email: </label>
+      <br />
+      <label for="Password">Password: </label>
+    </div>
+    <div class="form-right">
+      <input
+        id="Email"
+        type="email"
+        [(ngModel)]="Email"
+        name="Email"
+        title="Email"
+        placeholder="Email"
+      />
+      <br />
+      <input
+        id="Password"
+        type="password"
+        [(ngModel)]="Password"
+        name="Password"
+        title="Wachtwoord"
+        placeholder="Wachtwoord"
+      />
+    </div>
+  </div>
+
+  <button class="form-button" type="submit" (click)="LogIn()">Log in</button>
+  <br />
+  <a
+    routerLink="/signup"
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+  >
+    Sign up
+  </a>
+</form>

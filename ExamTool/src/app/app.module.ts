@@ -29,7 +29,7 @@ import { RegistrationComponent } from './registration/registration.component';
       { path: 'overview', component: OverviewComponent },
       { path: 'calendar', component: CalendarComponent },
       { path: 'form', component: FormComponent },
-      { path: 'form', component: RegistrationComponent },
+      { path: 'registration', component: RegistrationComponent },
       { path: '', redirectTo: '/overview', pathMatch: 'full' },
     ]),
   ],
