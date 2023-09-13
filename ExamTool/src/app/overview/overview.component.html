@@ -1,6 +1,11 @@
-<p>overview works!</p>
-
 <p>{{ timeofday }} {{ user }}</p>
-<div class="coming-exams" *ngFor="let Exam of Exams">
-  {{ Exam }}
+<div
+  class="coming-exams container-centered"
+  *ngFor="let Exam of Exams | slice : 0 : 3"
+>
+  <div class="coming-image"><img /></div>
+  <div class="coming-exam">
+    <h3>{{ Exam.ExamName }}</h3>
+    <h4>{{ Exam.Room }}</h4>
+  </div>
 </div>
