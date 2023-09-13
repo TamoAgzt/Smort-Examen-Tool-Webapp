@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { OverviewComponent } from './overview/overview.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormComponent } from './form/form.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormComponent } from './form/form.component';
     OverviewComponent,
     CalendarComponent,
     FormComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { FormComponent } from './form/form.component';
       { path: 'overview', component: OverviewComponent },
       { path: 'calendar', component: CalendarComponent },
       { path: 'form', component: FormComponent },
+      { path: 'form', component: RegistrationComponent },
       { path: '', redirectTo: '/overview', pathMatch: 'full' },
     ]),
   ],
