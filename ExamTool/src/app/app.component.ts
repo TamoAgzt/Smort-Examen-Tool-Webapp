@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,24 +7,24 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor (private router:Router) {
+    router.events.subscribe((val) => {
+      if (!(val instanceof NavigationEnd)) { return; }
+      this.onLoginPage = router.url == '/login';
+    });
+  };
+
   title = 'ExamTool';
 
   //#region Development helper stuff
   developmentNavigator = true;
-  onLoginPage = true;
+  onLoginPage:boolean = false;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key == 'ArrowDown') {
-      // Your row selection code
-      console.log(event.key);
-      if (this.developmentNavigator == false) {
-        this.developmentNavigator = true;
-        console.log(this.developmentNavigator);
-      } else if (this.developmentNavigator == true) {
-        this.developmentNavigator = false;
-        console.log(this.developmentNavigator);
-      }
-    }
+    if (event.key != 'ArrowDown') { return; }
+
+    this.developmentNavigator = !this.developmentNavigator;
+    console.log(this.developmentNavigator);
   }
 }
