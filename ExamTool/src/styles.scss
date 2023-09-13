@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+//=================================
+// Development helpers
+//=================================
+
+nav {
+  position: absolute;
+  display: flex;
+  z-index: 9001;
+  flex-direction: column;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px;
+  text-decoration: none;
+}
