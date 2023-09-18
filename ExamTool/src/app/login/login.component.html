@@ -1,20 +1,13 @@
 <form>
   <div class="custom-form">
-    <div class="form-email">
+    <div class="form-left">
       <label for="Email">Email: </label>
-      <input
-        id="Email"
-        type="email"
-        [(ngModel)]="Email"
-        name="Email"
-        title="Email"
-        placeholder="Email"
-      />
+      <br />
+      <label for="Password">Password: </label>
       <br />
     </div>
 
-    <div class="form-password">
-      <label for="Password">Password: </label>
+    <div class="form-right">
       <input
         id="Password"
         type="password"
@@ -22,6 +15,15 @@
         name="Password"
         title="Wachtwoord"
         placeholder="Wachtwoord"
+      />
+      <br />
+      <input
+        id="Email"
+        type="email"
+        [(ngModel)]="Email"
+        name="Email"
+        title="Email"
+        placeholder="Email"
       />
     </div>
   </div>
@@ -33,6 +35,6 @@
     routerLinkActive="activebutton"
     ariaCurrentWhenActive="page"
   >
-  Sign up
+    Sign up
   </a>
 </form>
