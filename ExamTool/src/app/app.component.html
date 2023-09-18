@@ -55,9 +55,13 @@
     src="../assets/Vista Weblogos/VISTA_Logo_Liggend_koraal_RGB.png"
     alt="logo"
   />
-  <span> Overzicht </span>
-  <a>TOGGLE</a>
-  <span> Kalender </span>
+
+  <div class="view-toggle-container">
+    <span> Overzicht </span>
+    <mat-slide-toggle></mat-slide-toggle>
+    <span> Kalender </span>
+  </div>
+
   <a
     class="button"
     routerLink="/form"
@@ -66,6 +70,7 @@
   >
     +
   </a>
-  <a>Uitloggen</a>
+
+  <a class="log-out">Uitloggen</a>
 </div>
 <router-outlet></router-outlet>
