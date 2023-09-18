@@ -1,10 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Railway&display=swap");
 
 :root {
-  --petrol: #00555c; // Main
-  --koraalrood: #ec644a; // Main
+  --petrol100: hwb(185 0% 64% / 1); // Main petrol 100%
+  --petrol90: hwb(185 0% 64% / 0.9); // Main petrol 90%
+  --petrol80: hwb(185 0% 64% / 0.8); // Main petrol 80%
+  --petrol70: hwb(185 0% 64% / 0.7); // Main petrol 70%
+  --petrol60: hwb(185 0% 64% / 0.6); // Main petrol 60%
+  --petrol50: hwb(185 0% 64% / 0.5); // Main petrol 50%
+  --koraalrood100: hwb(10 29% 7% / 1); // Main koraalrood 100%
+  --koraalrood90: hwb(10 29% 7% / 0.9); // Main koraalrood 90%
+  --koraalrood80: hwb(10 29% 7% / 0.8); // Main koraalrood 80%
+  --koraalrood70: hwb(10 29% 7% / 0.7); // Main koraalrood 70%
+  --koraalrood60: hwb(10 29% 7% / 0.6); // Main koraalrood 60%
+  --koraalrood50: hwb(10 29% 7% / 0.5); // Main koraalrood 50%
 
-  --citroengeel: #fff265; // Buttons
+  --citroengeel100: hwb(55 40% 0% / 1); // Buttons citroengeel 100%
+  --citroengeel70: hwb(55 40% 0% / 0.7); // Buttons citroengeel 70%
+  --citroengeel50: hwb(55 40% 0% / 0.5); // Buttons citroengeel 50%
+  --citroengeel30: hwb(55 40% 0% / 0.3); // Buttons citroengeel 30%
 }
 
 :host {
@@ -17,9 +30,6 @@ body {
   font-family: "Railway", sans-serif;
   margin: 0;
   padding: 0;
-  // width: 100vw;
-  // min-width: 100vw;
-  // max-width: 100vw;
   margin: auto;
 }
 
@@ -43,42 +53,49 @@ label {
 }
 
 .top-navbar {
-  background: #00555c;
-  width: 100%;
+  display: flex;
   height: 60px;
   max-height: 70px;
   padding: 10px;
   left: 0;
   right: 0;
-  display: flex;
-  // justify-content: space-between;
+
   line-height: 60px;
+  background: var(--petrol100);
+  span,
+  a {
+    color: white;
+    font-size: larger;
+  }
   .view-toggle-container {
+    padding: 0 30px;
     mat-slide-toggle {
       .mdc-switch__track {
-        background-color: #ec644a;
+        background-color: var(--koraalrood100);
       }
       .mdc-switch__handle {
-        background-color: #fff265;
+        background-color: var(--citroengeel100);
         fill: none;
       }
     }
-    padding: 0 30px;
-    span {
-      color: white;
+  }
+  .add-button {
+    background-color: var(--citroengeel100);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    svg {
+      fill: var(--koraalrood100);
     }
   }
   .log-out {
-    padding-right: 10px;
+    margin: 0 40px;
   }
 }
 
 .logo-image {
   height: 100%;
 }
-
-// .container-centered {
-// }
 
 //=================================
 // Development helpers
