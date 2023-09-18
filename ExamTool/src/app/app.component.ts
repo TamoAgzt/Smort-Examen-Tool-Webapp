@@ -14,6 +14,7 @@ export class AppComponent {
       }
       this.onLoginPage =
         router.url == '/login' || router.url == '/registration';
+      this.onCalendarPage = router.url == '/calendar';
     });
   }
 
@@ -22,6 +23,16 @@ export class AppComponent {
   //#region Development helper stuff
   developmentNavigator = true;
   onLoginPage: boolean = false;
+  onCalendarPage: boolean = false;
+
+  toggleOverview() {
+    if (this.onCalendarPage) {
+      this.router.navigate(['/calendar']);
+    }
+    if (!this.onCalendarPage) {
+      this.router.navigate(['/overview']);
+    }
+  }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
