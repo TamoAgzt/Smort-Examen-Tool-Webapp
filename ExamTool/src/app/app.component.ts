@@ -30,6 +30,5 @@ export class AppComponent {
     }
 
     this.developmentNavigator = !this.developmentNavigator;
-    console.log(this.developmentNavigator);
   }
 }
