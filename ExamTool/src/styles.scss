@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Railway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway5");
 
 :root {
   --petrol100: hwb(185 0% 64% / 1); // Main petrol 100%
@@ -57,18 +57,20 @@ label {
   height: 60px;
   max-height: 70px;
   padding: 10px;
+  padding-right: 100px;
   left: 0;
   right: 0;
+  justify-content: space-between;
 
   line-height: 60px;
-  background: var(--petrol100);
+  // background: var(--petrol100);
+  background-image: url(../src/assets/VistaWeblogos/header_lytho.png);
   span,
   a {
     color: white;
     font-size: larger;
   }
   .view-toggle-container {
-    padding: 0 30px;
     mat-slide-toggle {
       .mdc-switch__track {
         background-color: var(--koraalrood100);
@@ -80,16 +82,21 @@ label {
     }
   }
   .add-button {
-    background-color: var(--citroengeel100);
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    svg {
-      fill: var(--koraalrood100);
-    }
+
+    background-color: var(--citroengeel100);
+    fill: var(--koraalrood100);
   }
-  .log-out {
-    margin: 0 40px;
+}
+.log-out {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  :hover {
+    cursor: pointer;
   }
 }
 
