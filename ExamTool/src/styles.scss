@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway5");
+@import url("https://fonts.googleapis.com/css2?family=Raleway");
 
 :root {
   --petrol100: hwb(185 0% 64% / 1); // Main petrol 100%
@@ -107,12 +107,36 @@ form {
   width: 100%;
   text-align: center;
 }
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.overview-page {
+  padding: 5vh 0 0 0;
+  flex-direction: column;
+}
+
+.coming-exam {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  img {
+    width: 240px;
+    height: 180px;
+  }
+  .exam-right {
+    line-height: 20px;
+  }
+}
+
 .custom-form {
   display: flex;
   flex-direction: row;
   line-height: 24px;
   padding: 10vh 0 0 0;
-  justify-content: center;
   text-align: left;
   max-width: 100%;
   min-width: 100%;

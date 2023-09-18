@@ -1,11 +1,23 @@
-<p>{{ timeofday }} {{ user }}</p>
-<div
-  class="coming-exams container-centered"
-  *ngFor="let Exam of Exams | slice : 0 : 3"
->
-  <div class="coming-image"><img /></div>
-  <div class="coming-exam">
-    <h3>{{ Exam.ExamName }}</h3>
-    <h4>{{ Exam.Room }}</h4>
+<div class="overview-page center">
+  <h2>{{ timeofday }} {{ Accounts[1].Firstname }}</h2>
+
+  <div
+    class="coming-exams container-centered"
+    *ngFor="let Exam of Exams | slice : 0 : 3"
+  >
+    <div class="coming-exam">
+      <div class="coming-image">
+        <img src="{{ Exam.Image }}" />
+      </div>
+      <div class="exam-left exam-info">
+        <h3>{{ Exam.ExamName }}</h3>
+        <h4>{{ Exam.Room }}</h4>
+      </div>
+      <div class="exam-right exam-info">
+        <span>{{ Exam.Date }}</span>
+        <br />
+        <span>{{ Exam.Time }}</span>
+      </div>
+    </div>
   </div>
 </div>
