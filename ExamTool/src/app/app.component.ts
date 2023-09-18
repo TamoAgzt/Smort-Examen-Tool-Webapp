@@ -20,8 +20,6 @@ export class AppComponent {
 
   title = 'ExamTool';
 
-  //#region Development helper stuff
-  developmentNavigator = true;
   onLoginPage: boolean = false;
   onCalendarPage: boolean = false;
 
@@ -34,6 +32,9 @@ export class AppComponent {
     }
   }
 
+  //#region Development helper stuff
+  developmentNavigator = true;
+
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.key != 'ArrowDown') {
@@ -42,4 +43,5 @@ export class AppComponent {
 
     this.developmentNavigator = !this.developmentNavigator;
   }
+  //#endregion
 }

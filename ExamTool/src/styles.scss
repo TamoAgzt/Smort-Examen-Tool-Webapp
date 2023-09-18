@@ -103,10 +103,25 @@ label {
   height: 100%;
 }
 
+form {
+  width: 100%;
+  text-align: center;
+}
+.custom-form {
+  display: flex;
+  flex-direction: row;
+  line-height: 24px;
+  padding: 10vh 0 0 calc(50% - 125px);
+  text-align: left;
+  background-color: voilet;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+//#region Development helpers
 //=================================
 // Development helpers
 //=================================
-
 nav {
   position: absolute;
   display: flex;
@@ -118,3 +133,4 @@ nav {
   padding: 10px;
   text-decoration: none;
 }
+//#endregion
