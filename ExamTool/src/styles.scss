@@ -1,12 +1,16 @@
+/// Importing the proper font family
 @import url("https://fonts.googleapis.com/css2?family=Raleway");
 
 :root {
+  /// Here are the custom colors to be used on the site, in different transparancies
+
   --petrol100: hwb(185 0% 64% / 1); // Main petrol 100%
   --petrol90: hwb(185 0% 64% / 0.9); // Main petrol 90%
   --petrol80: hwb(185 0% 64% / 0.8); // Main petrol 80%
   --petrol70: hwb(185 0% 64% / 0.7); // Main petrol 70%
   --petrol60: hwb(185 0% 64% / 0.6); // Main petrol 60%
   --petrol50: hwb(185 0% 64% / 0.5); // Main petrol 50%
+
   --koraalrood100: hwb(10 29% 7% / 1); // Main koraalrood 100%
   --koraalrood90: hwb(10 29% 7% / 0.9); // Main koraalrood 90%
   --koraalrood80: hwb(10 29% 7% / 0.8); // Main koraalrood 80%
@@ -27,10 +31,9 @@
 }
 
 body {
+  // Set the body right font and remove body margins
   font-family: "Railway", sans-serif;
   margin: 0;
-  padding: 0;
-  margin: auto;
 }
 
 h1,
@@ -39,6 +42,7 @@ h3,
 h4,
 h5,
 h6 {
+  // Set all of the default headers' margins and line heights
   margin: 8px 0;
   line-height: 102%;
 }
@@ -47,12 +51,13 @@ span,
 p,
 a,
 label {
-  margin: 0;
+  // Set the most used text things to black and no decoration. This mainly applies to 'a'
   color: black;
   text-decoration: none;
 }
 
 .top-navbar {
+  // Make the navigation bar on the top of the page all the right properties
   display: flex;
   height: 60px;
   max-height: 70px;
@@ -66,6 +71,7 @@ label {
   background: var(--petrol100);
   span,
   a {
+    // Set custom properties to the texts in the navigation bar on the top
     color: white;
     font-size: larger;
   }
@@ -90,6 +96,7 @@ label {
   }
 }
 .log-out {
+  // For simplicity, we add the log out button separately to the navigation bar on the top of the page
   color: white;
   position: absolute;
   right: 10px;
@@ -104,28 +111,52 @@ label {
 }
 
 form {
+  // Set the login/regitration form's properties
   width: 100%;
   text-align: center;
 }
 
 .center {
+  // Center the login/regitration form
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
 .overview-page {
+  // Set the properties of the Overview page
   padding: 5vh 0 0 0;
   flex-direction: column;
 }
 
 .coming-exam {
+  // Position the upcoming exam list on the Overview page
   display: flex;
   flex-direction: row;
   justify-content: center;
-  img {
-    width: 240px;
-    height: 180px;
+  margin: 10px auto;
+  .coming-image {
+    // Size and position the image for the upcoming exam
+    width: 250px;
+    height: 190px;
+    background-color: var(--petrol100);
+    padding: 10px 0 -5px 0;
+    img {
+      width: 240px;
+      height: 180px;
+      object-fit: cover;
+    }
+  }
+  .exam-info {
+    background-color: var(--koraalrood50);
+    justify-content: center;
+    p {
+      // Size and position the image for the upcoming exam
+      line-height: 36px;
+      width: 300px;
+      min-width: 300px;
+      max-width: 300px;
+    }
   }
   .exam-right {
     line-height: 20px;
@@ -133,6 +164,7 @@ form {
 }
 
 .custom-form {
+  // Set the custom form's position properties
   display: flex;
   flex-direction: row;
   line-height: 24px;

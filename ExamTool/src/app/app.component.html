@@ -49,6 +49,7 @@
 <!-- =================== -->
 <!-- Development helper end -->
 <!-- =================== -->
+
 <div class="top-navbar" *ngIf="!onLoginPage">
   <img
     class="logo-image"
@@ -57,12 +58,26 @@
   />
 
   <div class="view-toggle-container">
-    <span> Overzicht </span>
+    <a
+      class="button"
+      routerLink="/overview"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+    >
+      Overzicht
+    </a>
     <mat-slide-toggle
       [(ngModel)]="onCalendarPage"
       (click)="toggleOverview()"
     ></mat-slide-toggle>
-    <span> Kalender </span>
+    <a
+      class="button"
+      routerLink="/calendar"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+    >
+      Kalender
+    </a>
   </div>
 
   <a
