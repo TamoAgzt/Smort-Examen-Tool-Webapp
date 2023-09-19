@@ -1,0 +1,16 @@
+.calendar {
+  margin-top: 25%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.week {
+  display: flex;
+  flex-direction: row;
+}
+
+.dag {
+  padding: 10px;
+}

@@ -1,1 +1,16 @@
-<p>calendar works!</p>
+<div class="calendar">
+  <div>
+    <div
+      class="week week{{ i + 1 }}"
+      *ngFor="let index of [].constructor(4); let i = index"
+    >
+      week{{ i + 1 }}
+      <div
+        class="dag dag{{ i + 1 }}"
+        *ngFor="let index of [].constructor(5); let i = index"
+      >
+        dag{{ i + 1 }}
+      </div>
+    </div>
+  </div>
+</div>
