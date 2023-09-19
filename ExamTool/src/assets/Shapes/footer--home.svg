@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1480px" viewBox="0 0 1440 1480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>footer--home</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 2.50127089e-12 1.34892097e-13 1344.76941 361.737744 1480 1439.00069 1083.2755 1440 2.50127089e-12"></polygon>
+    </defs>
+    <g id="Slices" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="footer--home" fill="#004752" transform="translate(720.000000, 740.000000) scale(1, -1) translate(-720.000000, -740.000000) " xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
