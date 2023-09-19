@@ -185,7 +185,7 @@ label {
 .form-right {
   input {
     border: 0px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--petrol100);
   }
 }
 
@@ -213,8 +213,6 @@ form {
   top: 0;
   transform: rotate(180deg);
   width: 100%;
-  img {
-  }
 }
 
 .background-shape-bottom {
@@ -222,8 +220,6 @@ form {
   display: flex;
   bottom: 0;
   width: 100%;
-  img {
-  }
 }
 
 form button {
