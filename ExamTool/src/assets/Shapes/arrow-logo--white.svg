@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>arrow-logo--white</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrow" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="arrow-logo--white" transform="translate(0.000000, -0.000000)">
+                <polygon id="arrow" transform="translate(5.000000, 7.500000) rotate(-180.000000) translate(-5.000000, -7.500000) " points="4.98233213 7.5 10 12.4882075 7.49116604 15 1.77635684e-15 7.5 7.49116604 1.77635684e-15 10 2.51179245"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
