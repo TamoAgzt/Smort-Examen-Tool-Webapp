@@ -173,6 +173,7 @@ form {
   text-align: left;
   max-width: 100%;
   min-width: 100%;
+  margin-bottom: 10px;
 }
 
 .form-right {
@@ -181,27 +182,36 @@ form {
     border-bottom: 1px solid black;
   }
 }
+
 form {
   margin: 40vh 0 0 0;
-  background-color: var(--koraalrood100);
+  // background-color: var(--koraalrood100);
   align-items: flex-start;
   position: relative;
   padding: 10px 0px 10px 0px;
 }
 
-/*
-form:before {
-  bottom: -80px;
+// form:before {
+//   bottom: -80px;
+//   position: absolute;
+//   height: 530px;
+//   background-size: 101% auto;
+//   background-image: url("./assets/Shapes/hero-coral-bottom.svg");
+//   content: " ";
+//   width: 100%;
+//   left: 0;
+//   background-repeat: no-repeat;
+// }
+
+.background-shape {
+  display: flex;
   position: absolute;
-  height: 530px;
-  background-size: 101% auto;
-  background-image: url('./assets/Shapes/hero-coral-bottom.svg');
-  content: " ";
-  width: 100%;
-  left: 0;
-  background-repeat: no-repeat;
+  top: 0;
+  transform: rotate(180deg);
+  img {
+    overflow: hidden;
+  }
 }
-*/
 
 form button {
   padding: 0.7rem 1.2rem 0.675rem 3.5rem;
@@ -209,6 +219,8 @@ form button {
   background-image: url(./assets/Shapes/arrow-logo--white.svg);
   background-position: 16px;
   background-repeat: no-repeat;
+  width: 200px;
+  margin: 10px 0 5px 0;
   color: #fff;
   border-radius: 4px;
   transition: 0.2s ease;
@@ -217,6 +229,7 @@ form button {
 form button:not(.disabled):hover {
   opacity: 0.8;
   background-position: 22px;
+  cursor: pointer;
 }
 
 //#region Development helpers
