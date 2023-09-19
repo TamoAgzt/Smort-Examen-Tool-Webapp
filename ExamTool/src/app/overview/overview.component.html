@@ -10,13 +10,14 @@
         <img src="{{ Exam.Image }}" />
       </div>
       <div class="exam-left exam-info">
-        <h3>{{ Exam.ExamName }}</h3>
-        <h4>{{ Exam.Room }}</h4>
+        <p class="exam-name">{{ Exam.ExamName }}</p>
+        <p>{{ Exam.Room }}</p>
+        <p>Vak: {{ Exam.Subject }}</p>
       </div>
       <div class="exam-right exam-info">
-        <span>{{ Exam.Date }}</span>
-        <br />
-        <span>{{ Exam.Time }}</span>
+        <p>Datum: {{ Exam.Date }}</p>
+        <p>Start tijd: {{ Exam.Time }}</p>
+        <p>Toezichthouder: {{ Exam.Supervisor }}</p>
       </div>
     </div>
   </div>
