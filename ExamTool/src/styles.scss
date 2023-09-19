@@ -110,12 +110,6 @@ label {
   height: 100%;
 }
 
-form {
-  // Set the login/regitration form's properties
-  width: 100%;
-  text-align: center;
-}
-
 .center {
   // Center the login/regitration form
   text-align: center;
@@ -161,8 +155,17 @@ form {
       max-width: 300px;
     }
   }
+
+  .exam-left {
+    border-top: 2px solid var(--petrol100);
+    border-left: 2px solid var(--petrol100);
+    border-bottom: 2px solid var(--petrol100);
+  }
   .exam-right {
     line-height: 20px;
+    border-top: 2px solid var(--petrol100);
+    border-right: 2px solid var(--petrol100);
+    border-bottom: 2px solid var(--petrol100);
   }
 }
 
@@ -175,33 +178,34 @@ form {
   min-width: 100%;
   margin-bottom: 10px;
 }
+.form-left label {
+  padding: 20px;
+}
 
 .form-right {
   input {
     border: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
   }
 }
 
 form {
-  margin: 40vh 0 0 0;
+  // Set the login/regitration form's properties
+  width: 100%;
+  text-align: center;
   // background-color: var(--koraalrood100);
   align-items: flex-start;
   position: relative;
   padding: 10px 0px 10px 0px;
 }
 
-// form:before {
-//   bottom: -80px;
-//   position: absolute;
-//   height: 530px;
-//   background-size: 101% auto;
-//   background-image: url("./assets/Shapes/hero-coral-bottom.svg");
-//   content: " ";
-//   width: 100%;
-//   left: 0;
-//   background-repeat: no-repeat;
-// }
+.enter-form {
+  margin: 40vh 0 0 0;
+}
+
+.exam-form {
+  margin: 10vh 0 0 0;
+}
 
 .background-shape-top {
   display: flex;
@@ -233,6 +237,7 @@ form button {
   color: #fff;
   border-radius: 4px;
   transition: 0.2s ease;
+  border: none;
 }
 
 form button:not(.disabled):hover {
