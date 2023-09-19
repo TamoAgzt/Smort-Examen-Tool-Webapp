@@ -177,6 +177,13 @@ form {
   min-width: 100%;
 }
 
+.form-right {
+  input {
+    border: 0px;
+    border-bottom: 1px solid black;
+  }
+}
+
 //#region Development helpers
 //=================================
 // Development helpers
