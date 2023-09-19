@@ -1,1 +1,259 @@
-/* You can add global styles to this file, and also import other style files */
+/// Importing the proper font family
+@import url("https://fonts.googleapis.com/css2?family=Raleway");
+
+:root {
+  /// Here are the custom colors to be used on the site, in different transparancies
+
+  --petrol100: hwb(185 0% 64% / 1); // Main petrol 100%
+  --petrol90: hwb(185 0% 64% / 0.9); // Main petrol 90%
+  --petrol80: hwb(185 0% 64% / 0.8); // Main petrol 80%
+  --petrol70: hwb(185 0% 64% / 0.7); // Main petrol 70%
+  --petrol60: hwb(185 0% 64% / 0.6); // Main petrol 60%
+  --petrol50: hwb(185 0% 64% / 0.5); // Main petrol 50%
+
+  --koraalrood100: hwb(10 29% 7% / 1); // Main koraalrood 100%
+  --koraalrood90: hwb(10 29% 7% / 0.9); // Main koraalrood 90%
+  --koraalrood80: hwb(10 29% 7% / 0.8); // Main koraalrood 80%
+  --koraalrood70: hwb(10 29% 7% / 0.7); // Main koraalrood 70%
+  --koraalrood60: hwb(10 29% 7% / 0.6); // Main koraalrood 60%
+  --koraalrood50: hwb(10 29% 7% / 0.5); // Main koraalrood 50%
+
+  --citroengeel100: hwb(55 40% 0% / 1); // Buttons citroengeel 100%
+  --citroengeel70: hwb(55 40% 0% / 0.7); // Buttons citroengeel 70%
+  --citroengeel50: hwb(55 40% 0% / 0.5); // Buttons citroengeel 50%
+  --citroengeel30: hwb(55 40% 0% / 0.3); // Buttons citroengeel 30%
+}
+
+:host {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  // Set the body right font and remove body margins
+  font-family: "Railway", sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // Set all of the default headers' margins and line heights
+  margin: 8px 0;
+  line-height: 102%;
+}
+
+span,
+p,
+a,
+label {
+  // Set the most used text things to black and no decoration. This mainly applies to 'a'
+  color: black;
+  text-decoration: none;
+}
+
+.top-navbar {
+  // Make the navigation bar on the top of the page all the right properties
+  display: flex;
+  height: 60px;
+  max-height: 70px;
+  padding: 10px;
+  padding-right: 100px;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+
+  line-height: 60px;
+  background: var(--petrol100);
+  span,
+  a {
+    // Set custom properties to the texts in the navigation bar on the top
+    color: white;
+    font-size: larger;
+  }
+  .view-toggle-container {
+    mat-slide-toggle {
+      .mdc-switch__track {
+        background-color: var(--koraalrood100);
+      }
+      .mdc-switch__handle {
+        background-color: var(--citroengeel100);
+        fill: none;
+      }
+    }
+  }
+  .add-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    background-color: var(--citroengeel100);
+    fill: var(--koraalrood100);
+  }
+}
+.log-out {
+  // For simplicity, we add the log out button separately to the navigation bar on the top of the page
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.logo-image {
+  height: 100%;
+}
+
+form {
+  // Set the login/regitration form's properties
+  width: 100%;
+  text-align: center;
+}
+
+.center {
+  // Center the login/regitration form
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.overview-page {
+  // Set the properties of the Overview page
+  padding: 5vh 0 0 0;
+  flex-direction: column;
+}
+
+.coming-exam {
+  // Position the upcoming exam list on the Overview page
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px auto;
+  .coming-image {
+    // Size and position the image for the upcoming exam
+    width: 250px;
+    height: 190px;
+    background-color: var(--petrol100);
+    padding: 10px 0 -5px 0;
+    img {
+      width: 240px;
+      height: 180px;
+      object-fit: cover;
+    }
+  }
+  .exam-info {
+    background-color: var(--koraalrood50);
+    justify-content: center;
+    .exam-name {
+      font-weight: bolder;
+    }
+    p {
+      // Size and position the image for the upcoming exam
+      line-height: 36px;
+      width: 300px;
+      min-width: 300px;
+      max-width: 300px;
+    }
+  }
+  .exam-right {
+    line-height: 20px;
+  }
+}
+
+.custom-form {
+  // Set the custom form's position properties
+  display: flex;
+  line-height: 24px;
+  text-align: left;
+  max-width: 100%;
+  min-width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-right {
+  input {
+    border: 0px;
+    border-bottom: 1px solid black;
+  }
+}
+
+form {
+  margin: 40vh 0 0 0;
+  // background-color: var(--koraalrood100);
+  align-items: flex-start;
+  position: relative;
+  padding: 10px 0px 10px 0px;
+}
+
+// form:before {
+//   bottom: -80px;
+//   position: absolute;
+//   height: 530px;
+//   background-size: 101% auto;
+//   background-image: url("./assets/Shapes/hero-coral-bottom.svg");
+//   content: " ";
+//   width: 100%;
+//   left: 0;
+//   background-repeat: no-repeat;
+// }
+
+.background-shape-top {
+  display: flex;
+  position: absolute;
+  top: 0;
+  transform: rotate(180deg);
+  width: 100%;
+  img {
+  }
+}
+
+.background-shape-bottom {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  img {
+  }
+}
+
+form button {
+  padding: 0.7rem 1.2rem 0.675rem 3.5rem;
+  background-color: var(--petrol100);
+  background-image: url(./assets/Shapes/arrow-logo--white.svg);
+  background-position: 16px;
+  background-repeat: no-repeat;
+  width: 200px;
+  margin: 10px 0 5px 0;
+  color: #fff;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+
+form button:not(.disabled):hover {
+  opacity: 0.8;
+  background-position: 22px;
+  cursor: pointer;
+}
+
+//#region Development helpers
+//=================================
+// Development helpers
+//=================================
+nav {
+  position: absolute;
+  display: flex;
+  z-index: 9001;
+  flex-direction: column;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px;
+  text-decoration: none;
+}
+//#endregion

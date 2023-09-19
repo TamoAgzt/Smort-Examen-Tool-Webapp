@@ -1,14 +1,10 @@
-<!-- <div style="height:600px;"></div> -->
-
 <form>
   <div class="custom-form center">
     <div class="form-left">
-      <label for="Email">Email: </label>
-      <br />
+      <label for="Email">Email: </label> <br />
+      <label for="Username">Gebruikersnaam: </label> <br />
       <label for="Password">Wachtwoord: </label>
-      <br />
     </div>
-
     <div class="form-right">
       <input
         id="Email"
@@ -20,6 +16,15 @@
       />
       <br />
       <input
+        id="Username"
+        type="Username"
+        [(ngModel)]="UserName"
+        name="Username"
+        title="Leerling nummer"
+        placeholder="Leerling nummer"
+      />
+      <br />
+      <input
         id="Password"
         type="password"
         [(ngModel)]="Password"
@@ -28,16 +33,19 @@
         placeholder="Wachtwoord"
       />
     </div>
+    <br />
   </div>
 
-  <button class="form-button" type="submit" (click)="LogIn()">Inloggen</button>
+  <button class="form-button" type="submit" (click)="SignUp()">
+    Registratie
+  </button>
   <br />
   <button
-    routerLink="/registration"
+    routerLink="/login"
     routerLinkActive="activebutton"
     ariaCurrentWhenActive="page"
   >
-    Registratie
+    Inloggen
   </button>
 </form>
 
