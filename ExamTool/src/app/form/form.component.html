@@ -1,1 +1,107 @@
-<p>form works!</p>
+<form>
+  <div class="custom-form center">
+    <div class="form-left">
+      <label for="Image">Afbeelding </label>
+      <br />
+      <label for="ExamName">Examen Naam </label>
+      <br />
+      <label for="ExamName">Vak </label>
+      <br />
+      <label for="ExamName">Klas </label>
+      <br />
+      <label for="ExamName">Lokaal </label>
+      <br />
+      <label for="ExamName">Toezichthouder </label>
+      <br />
+      <label for="ExamName">Datum </label>
+      <br />
+      <label for="ExamName">Tijdstip </label>
+      <br />
+    </div>
+
+    <div class="form-right">
+      <!-- <input
+        id="Image"
+        type="file"
+        [(ngModel)]="Image"
+        name="Afbeelding"
+        placeholder="Afbeelding"
+        onchange="console.log(event.target.files)"
+      /> -->
+      <input
+        id="Image"
+        type="text"
+        [(ngModel)]="Image"
+        name="Image"
+        title="Afbeelding"
+        placeholder="Afbeelding"
+      />
+      <br />
+      <input
+        id="ExamName"
+        type="text"
+        [(ngModel)]="ExamName"
+        name="ExamName"
+        title="Examen Naam"
+        placeholder="Examen Naam"
+      />
+      <br />
+      <input
+        id="Subject"
+        type="text"
+        [(ngModel)]="Subject"
+        name="Subject"
+        title="Vak"
+        placeholder="Vak"
+      />
+      <br />
+      <input
+        id="Class"
+        type="text"
+        [(ngModel)]="Class"
+        name="Class"
+        title="Klas"
+        placeholder="Klas"
+      />
+      <br />
+      <input
+        id="Room"
+        type="text"
+        [(ngModel)]="Room"
+        name="Room"
+        title="Lokaal"
+        placeholder="Lokaal"
+      />
+      <br />
+      <input
+        id="Supervisor"
+        type="text"
+        [(ngModel)]="Supervisor"
+        name="Supervisor"
+        title="Toezichthouder"
+        placeholder="Toezichthouder"
+      />
+      <br />
+      <input
+        id="Date"
+        type="text"
+        [(ngModel)]="Date"
+        name="Date"
+        title="Datum"
+        placeholder="Datum"
+      />
+      <br />
+      <input
+        id="Time"
+        type="text"
+        [(ngModel)]="Time"
+        name="Time"
+        title="Tijdstip"
+        placeholder="Tijdstip"
+      />
+    </div>
+  </div>
+
+  <!-- <button class="form-button" type="submit" (click)="Save()">Opslaan</button> -->
+  <button class="form-button" type="submit">Opslaan</button>
+</form>

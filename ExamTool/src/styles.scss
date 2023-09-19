@@ -150,6 +150,9 @@ form {
   .exam-info {
     background-color: var(--koraalrood50);
     justify-content: center;
+    .exam-name {
+      font-weight: bolder;
+    }
     p {
       // Size and position the image for the upcoming exam
       line-height: 36px;
