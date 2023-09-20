@@ -1,5 +1,5 @@
 .calendar {
-  margin-top: 15%;
+  margin-top: 5%;
   width: 100%;
   text-align: center;
   display: flex;
@@ -14,14 +14,24 @@
 .dag {
   border-radius: 10px;
   border: 2px var(--petrol100) solid;
-  width: 125px;
+  width: 150px;
   height: 100px;
   position: relative;
-  margin: 10px;
+  margin: 15px 10px;
   background-color: var(--koraalrood50);
 }
 
-.dag p:not(:empty) {
+.dag .daynum {
+  margin: 0;
+  position: absolute;
+  top: -67%;
+  width: 100%;
+  padding: 10px 0px;
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.dag .exambanner:not(:empty) {
   background-color: var(--koraalrood100);
   margin: 0;
   position: absolute;

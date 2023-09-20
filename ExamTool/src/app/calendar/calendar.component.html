@@ -1,14 +1,15 @@
 <div class="calendar">
   <div>
     <div
-      class="week week{{ i + 1 }}"
-      *ngFor="let index of [].constructor(4); let i = index"
+      class="week week{{ week + 1 }}"
+      *ngFor="let index of [].constructor(4); let week = index"
     >
       <div
-        class="dag dag{{ i + 1 }}"
-        *ngFor="let index of [].constructor(5); let i = index"
+        class="dag dag{{ day + 1 }}"
+        *ngFor="let index of [].constructor(5); let day = index"
       >
-        <p>dag{{ i + 1 }}</p>
+        <p class="daynum">Werkdag {{ day + 1 }}</p>
+        <p class="exambanner">00:00 - Prostate exam</p>
       </div>
     </div>
   </div>
