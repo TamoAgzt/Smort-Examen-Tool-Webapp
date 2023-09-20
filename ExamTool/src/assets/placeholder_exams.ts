@@ -61,14 +61,4 @@ export const Exams: Exam[] = [
     Date: '29/09/2023',
     Time: '13:15',
   },
-  {
-    Image: 'https://torngems.nl/wp-content/uploads/2023/06/20220507.png',
-    ExamName: 'prostate exam',
-    Subject: 'biologie',
-    Class: 'ab123',
-    Room: 'b1.17',
-    Supervisor: 'rick veltrop',
-    Date: '21/09/2023',
-    Time: '14:15',
-  },
 ];
