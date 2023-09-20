@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   //#region Development helper stuff
-  developmentNavigator = true;
+  developmentNavigator = false;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {

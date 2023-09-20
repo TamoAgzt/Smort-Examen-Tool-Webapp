@@ -251,6 +251,20 @@ form button:not(.disabled):hover {
   width: 100%;
 }
 
+.exam-form-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .container-left {
+    width: 50%;
+    background-color: aqua;
+  }
+  .container-right {
+    width: 50%;
+    background-color: pink;
+  }
+}
+
 //#region Development helpers
 //=================================
 // Development helpers
