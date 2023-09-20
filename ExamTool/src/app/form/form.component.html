@@ -1,5 +1,24 @@
 <div class="exam-form-page">
-  <div class="container-left"></div>
+  <div class="container-left">
+    <div class="calendar">
+      <div>
+        <div
+          class="week week{{ week + 1 }}"
+          *ngFor="let index of [].constructor(4); let week = index"
+        >
+          <p>Week {{ week + 1 }}</p>
+          <div
+            class="dag dag{{ day + 1 }}"
+            *ngFor="let index of [].constructor(5); let day = index"
+          >
+            <p class="exambanner">
+              {{ Exams[day].Time }} - {{ Exams[day].ExamName }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container-right">
     <form class="exam-form">
