@@ -91,7 +91,13 @@
     </svg>
   </a>
 </div>
-
-<a class="log-out">Uitloggen</a>
+<a
+  class="log-out"
+  routerLink="/login"
+  routerLinkActive="activebutton"
+  ariaCurrentWhenActive="page"
+>
+  Uitloggen
+</a>
 
 <router-outlet></router-outlet>

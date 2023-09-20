@@ -61,7 +61,7 @@ label {
   display: flex;
   height: 60px;
   max-height: 70px;
-  padding: 10px;
+  padding: 10px 50px;
   padding-right: 100px;
   left: 0;
   right: 0;
@@ -76,6 +76,7 @@ label {
     font-size: larger;
   }
   .view-toggle-container {
+    margin-left: -100px;
     mat-slide-toggle {
       .mdc-switch__track {
         background-color: var(--koraalrood100);
@@ -87,20 +88,23 @@ label {
     }
   }
   .add-button {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    margin: auto 0;
 
     background-color: var(--citroengeel100);
     fill: var(--koraalrood100);
   }
 }
+
 .log-out {
   // For simplicity, we add the log out button separately to the navigation bar on the top of the page
   color: white;
   position: absolute;
-  right: 10px;
-  top: 30px;
+  top: 0px;
+  margin: 30px 200px 0 0;
+  right: 0px;
   :hover {
     cursor: pointer;
   }
@@ -108,12 +112,6 @@ label {
 
 .logo-image {
   height: 100%;
-}
-
-form {
-  // Set the login/regitration form's properties
-  width: 100%;
-  text-align: center;
 }
 
 .center {
@@ -161,8 +159,17 @@ form {
       max-width: 300px;
     }
   }
+
+  .exam-left {
+    border-top: 2px solid var(--petrol100);
+    border-left: 2px solid var(--petrol100);
+    border-bottom: 2px solid var(--petrol100);
+  }
   .exam-right {
     line-height: 20px;
+    border-top: 2px solid var(--petrol100);
+    border-right: 2px solid var(--petrol100);
+    border-bottom: 2px solid var(--petrol100);
   }
 }
 
@@ -175,51 +182,33 @@ form {
   min-width: 100%;
   margin-bottom: 10px;
 }
+.form-left label {
+  padding: 20px;
+}
 
 .form-right {
   input {
     border: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid var(--petrol100);
   }
 }
 
 form {
-  margin: 40vh 0 0 0;
+  // Set the login/regitration form's properties
+  width: 100%;
+  text-align: center;
   // background-color: var(--koraalrood100);
   align-items: flex-start;
   position: relative;
   padding: 10px 0px 10px 0px;
 }
 
-// form:before {
-//   bottom: -80px;
-//   position: absolute;
-//   height: 530px;
-//   background-size: 101% auto;
-//   background-image: url("./assets/Shapes/hero-coral-bottom.svg");
-//   content: " ";
-//   width: 100%;
-//   left: 0;
-//   background-repeat: no-repeat;
-// }
-
-.background-shape-top {
-  display: flex;
-  position: absolute;
-  top: 0;
-  transform: rotate(180deg);
-  width: 100%;
-  img {
-  }
+.enter-form {
+  margin: 40vh 0 0 0;
 }
 
-.background-shape-bottom {
-  position: absolute;
-  display: flex;
-  bottom: 0;
-  width: 100%;
-  img {
-  }
+.exam-form {
+  margin: 10vh 0 0 0;
 }
 
 form button {
@@ -229,16 +218,51 @@ form button {
   background-position: 16px;
   background-repeat: no-repeat;
   width: 200px;
-  margin: 10px 0 5px 0;
-  color: #fff;
+  margin: 15px 0 5px 0;
+  color: white;
+  font-size: large;
   border-radius: 4px;
   transition: 0.2s ease;
+  border: none;
 }
 
 form button:not(.disabled):hover {
   opacity: 0.8;
   background-position: 22px;
   cursor: pointer;
+}
+
+.background-shape-top {
+  display: flex;
+  position: absolute;
+  top: 0;
+  background-color: var(--koraalrood100);
+  clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  transform: rotate(180deg);
+  width: 100%;
+}
+
+.background-shape-bottom {
+  position: absolute;
+  display: flex;
+  background-color: var(--koraalrood100);
+  clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  bottom: 0;
+  width: 100%;
+}
+
+.exam-form-page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  .container-left {
+    width: 50%;
+    // background-color: aqua;
+  }
+  .container-right {
+    width: 50%;
+    // background-color: pink;
+  }
 }
 
 //#region Development helpers
