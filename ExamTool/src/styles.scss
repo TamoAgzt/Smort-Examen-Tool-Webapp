@@ -211,21 +211,6 @@ form {
   margin: 10vh 0 0 0;
 }
 
-.background-shape-top {
-  display: flex;
-  position: absolute;
-  top: 0;
-  transform: rotate(180deg);
-  width: 100%;
-}
-
-.background-shape-bottom {
-  position: absolute;
-  display: flex;
-  bottom: 0;
-  width: 100%;
-}
-
 form button {
   padding: 0.7rem 1.2rem 0.675rem 3.5rem;
   background-color: var(--petrol100);
@@ -245,6 +230,25 @@ form button:not(.disabled):hover {
   opacity: 0.8;
   background-position: 22px;
   cursor: pointer;
+}
+
+.background-shape-top {
+  display: flex;
+  position: absolute;
+  top: 0;
+  background-color: var(--koraalrood100);
+  clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  transform: rotate(180deg);
+  width: 100%;
+}
+
+.background-shape-bottom {
+  position: absolute;
+  display: flex;
+  background-color: var(--koraalrood100);
+  clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  bottom: 0;
+  width: 100%;
 }
 
 //#region Development helpers
