@@ -8,8 +8,8 @@
         class="dag dag{{ day + 1 }}"
         *ngFor="let index of [].constructor(5); let day = index"
       >
-        <p class="daynum">Werkdag {{ day + 1 }}</p>
-        <p class="exambanner">00:00 - Prostate exam</p>
+        <p class="daynum">Werkdag {{ day + 1 }} {{Exams[day].Date}}</p>
+        <p class="exambanner">{{Exams[day].Time}} - {{Exams[day].ExamName}}</p>
       </div>
     </div>
   </div>

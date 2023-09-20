@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Exam, Exams } from '../../assets/placeholder_exams';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,7 @@ export class CalendarComponent {
     this.GetData()
   }
 
+  Exams:Exam[] = Exams;
   ResponseData: any = null;
 
   GetData() {
