@@ -238,6 +238,7 @@ form button:not(.disabled):hover {
   top: 0;
   background-color: var(--koraalrood100);
   clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  z-index: -1;
   transform: rotate(180deg);
   width: 100%;
 }
@@ -247,6 +248,7 @@ form button:not(.disabled):hover {
   display: flex;
   background-color: var(--koraalrood100);
   clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
+  z-index: -1;
   bottom: 0;
   width: 100%;
 }
