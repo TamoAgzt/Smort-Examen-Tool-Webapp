@@ -1,4 +1,4 @@
-/// Importing the proper font family
+// Importing the proper font family
 @import url("https://fonts.googleapis.com/css2?family=Raleway");
 
 :root {
@@ -56,11 +56,14 @@ label {
   text-decoration: none;
 }
 
+.top-navbar .mobile {
+  display: none;
+}
+
 .top-navbar {
   // Make the navigation bar on the top of the page all the right properties
   display: flex;
   height: 60px;
-  max-height: 70px;
   padding: 10px 50px;
   padding-right: 100px;
   left: 0;
@@ -90,6 +93,10 @@ label {
   .add-button {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
     border-radius: 50%;
     margin: auto 0;
 
@@ -283,3 +290,57 @@ nav {
   text-decoration: none;
 }
 //#endregion
+
+// Mobile view
+@media only screen and (max-width: 768px) {
+  .top-navbar .desktop {
+    display: none;
+  }
+  .top-navbar .mobile {
+    display: block;
+    svg {
+      fill: white;
+    }
+  }
+
+  .top-navbar {
+    // Make the navigation bar on the top of the page all the right properties
+    display: flex;
+    height: 60px;
+    justify-content: space-evenly;
+
+    padding: 10px;
+
+    line-height: 60px;
+    .add-button {
+      svg {
+        fill: var(--koraalrood100);
+      }
+    }
+  }
+
+  .log-out {
+    // For simplicity, we add the log out button separately to the navigation bar on the top of the page
+
+    position: absolute;
+    top: 0px;
+    margin: 30px 200px 0 0;
+    right: 0px;
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .exam-form-page {
+    flex-direction: column;
+    width: 100%;
+    .container-left {
+      width: 100%;
+      // background-color: aqua;
+    }
+    .container-right {
+      width: 100%;
+      // background-color: pink;
+    }
+  }
+}
