@@ -56,11 +56,13 @@ label {
   text-decoration: none;
 }
 
-.top-navbar .mobile {
-  display: none;
-}
-
 .top-navbar {
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
   // Make the navigation bar on the top of the page all the right properties
   display: flex;
   height: 60px;
@@ -90,7 +92,13 @@ label {
       }
     }
   }
+  svg {
+    fill: white;
+  }
   .add-button {
+    svg {
+      fill: var(--koraalrood100);
+    }
     width: 40px;
     height: 40px;
     min-width: 40px;
@@ -101,7 +109,6 @@ label {
     margin: auto 0;
 
     background-color: var(--citroengeel100);
-    fill: var(--koraalrood100);
   }
 }
 
@@ -292,44 +299,40 @@ nav {
 //#endregion
 
 // Mobile view
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 200px) and (max-width: 760px) {
   .top-navbar .desktop {
     display: none;
   }
   .top-navbar .mobile {
     display: block;
-    svg {
-      fill: white;
-    }
   }
 
   .top-navbar {
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
     // Make the navigation bar on the top of the page all the right properties
     display: flex;
-    height: 60px;
-    justify-content: space-evenly;
-
+    max-height: 60px;
+    justify-content: space-between;
     padding: 10px;
-
     line-height: 60px;
-    .add-button {
-      svg {
-        fill: var(--koraalrood100);
-      }
-    }
+    // .view-toggle-container {
+    //   width: 100%;
+    //   margin: 0 auto;
+    // }
   }
 
-  .log-out {
-    // For simplicity, we add the log out button separately to the navigation bar on the top of the page
-
-    position: absolute;
-    top: 0px;
-    margin: 30px 200px 0 0;
-    right: 0px;
-    :hover {
-      cursor: pointer;
-    }
-  }
+  // .log-out {
+  //   // For simplicity, we add the log out button separately to the navigation bar on the top of the page
+  //   width: 60px;
+  //   :hover {
+  //     cursor: pointer;
+  //   }
+  // }
 
   .exam-form-page {
     flex-direction: column;
