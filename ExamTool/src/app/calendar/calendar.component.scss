@@ -1,5 +1,5 @@
 .calendar {
-  margin-top: 5%;
+  margin-top: 2.5%;
   width: 100%;
   text-align: center;
   display: flex;
@@ -14,19 +14,19 @@
 .dag {
   border-radius: 10px;
   border: 2px var(--petrol100) solid;
-  width: 250px;
-  height: 125px;
+  width: 12.5vw;
+  height: 12.5vh;
   position: relative;
-  margin: 15px 10px;
+  margin: 5px 10px;
   background-color: var(--koraalrood50);
 }
 
 .dag .daynum {
   margin: 0;
   position: absolute;
-  top: -55%;
+  top: -7.5vh;
   width: 100%;
-  padding: 10px 0px;
+  padding: 1% 0px;
   -ms-transform: translateY(100%);
   transform: translateY(100%);
 }
@@ -37,7 +37,15 @@
   position: absolute;
   top: 50%;
   width: 100%;
-  padding: 10px 0 10px 0;
+  padding: 5px 0 10px 0;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@media only screen and (min-width: 200px) and (max-width: 760px) {
+  .dag {
+    margin: 1px 2.5px;
+    width: 16vw;
+    height: 15vh;
+  }
 }
