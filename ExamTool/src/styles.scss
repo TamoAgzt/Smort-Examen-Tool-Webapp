@@ -56,15 +56,15 @@ label {
   text-decoration: none;
 }
 
-.top-navbar {
-  .desktop {
-    display: block;
-  }
-  .mobile {
-    display: none;
-  }
-  // Make the navigation bar on the top of the page all the right properties
+.desktop {
   display: flex;
+}
+.mobile {
+  display: none;
+}
+
+.top-navbar {
+  // Make the navigation bar on the top of the page all the right properties
   height: 60px;
   padding: 10px 50px;
   padding-right: 100px;
@@ -311,6 +311,13 @@ nav {
     svg {
       width: 40px;
     }
+  }
+
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: flex;
   }
 
   .hamburger {
