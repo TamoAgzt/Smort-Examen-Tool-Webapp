@@ -246,25 +246,22 @@ form button:not(.disabled):hover {
   cursor: pointer;
 }
 
-.background-shape-top {
+.background-thingie {
   display: flex;
-  position: absolute;
-  top: 0;
+  z-index: -1;
   background-color: var(--koraalrood100);
   clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
-  z-index: -1;
-  transform: rotate(180deg);
+  position: fixed;
   width: 100%;
 }
 
+.background-shape-top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
 .background-shape-bottom {
-  position: absolute;
-  display: flex;
-  background-color: var(--koraalrood100);
-  clip-path: polygon(27% 83%, 100% 59%, 100% 100%, 0 100%, 0 31%);
-  z-index: -1;
   bottom: 0;
-  width: 100%;
 }
 
 .exam-form-page {
@@ -321,19 +318,17 @@ nav {
   }
 
   .hamburger {
-    svg {
-      fill: var(--koraalrood100);
-    }
-    .log-out {
-      position: relative;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      :hover {
-        cursor: pointer;
-      }
-      height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 200px;
+    a {
+      padding: 4px;
+      background-color: var(--citroengeel100);
+      border-radius: 14px;
       width: 40px;
+      svg {
+        fill: var(--koraalrood100);
+      }
     }
   }
 
