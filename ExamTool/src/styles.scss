@@ -300,50 +300,96 @@ nav {
 
 // Mobile view
 @media only screen and (min-width: 200px) and (max-width: 760px) {
-  .top-navbar .desktop {
-    display: none;
-  }
-  .top-navbar .mobile {
-    display: block;
-  }
-
   .top-navbar {
-    .desktop {
-      display: none;
-    }
-    .mobile {
-      display: block;
-    }
     // Make the navigation bar on the top of the page all the right properties
     display: flex;
     max-height: 60px;
     justify-content: space-between;
     padding: 10px;
     line-height: 60px;
-    // .view-toggle-container {
-    //   width: 100%;
-    //   margin: 0 auto;
-    // }
+    fill: yellow;
+    svg {
+      width: 40px;
+    }
   }
 
-  // .log-out {
-  //   // For simplicity, we add the log out button separately to the navigation bar on the top of the page
-  //   width: 60px;
-  //   :hover {
-  //     cursor: pointer;
-  //   }
-  // }
+  .hamburger {
+    svg {
+      fill: var(--koraalrood100);
+    }
+    .log-out {
+      position: relative;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      :hover {
+        cursor: pointer;
+      }
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .coming-exam {
+    .coming-image {
+      // Size and position the image for the upcoming exam
+      img {
+        width: 240px;
+        height: 180px;
+        max-height: 180px;
+        object-fit: cover;
+      }
+    }
+    .exam-info {
+      p {
+        // Size and position the image for the upcoming exam
+        line-height: 36px;
+        width: 200px;
+        min-width: 100px;
+        max-width: 200px;
+        height: auto;
+        max-height: 60px;
+      }
+    }
+
+    .exam-right {
+      line-height: 26px;
+    }
+  }
 
   .exam-form-page {
     flex-direction: column;
     width: 100%;
     .container-left {
       width: 100%;
-      // background-color: aqua;
     }
     .container-right {
       width: 100%;
-      // background-color: pink;
+      font-size: 26px;
+      label {
+        line-height: 34px;
+      }
+      input {
+        line-height: 26px;
+        font-size: 26px;
+      }
     }
+  }
+
+  .custom-form {
+    font-size: 26px;
+    label {
+      line-height: 34px;
+    }
+    input {
+      line-height: 26px;
+      font-size: 26px;
+    }
+  }
+
+  form button {
+    width: 240px;
+    height: 80px;
+    font-size: larger;
   }
 }
