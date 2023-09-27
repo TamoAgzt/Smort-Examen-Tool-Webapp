@@ -296,7 +296,7 @@ nav {
 //#endregion
 
 // Mobile view
-@media only screen and (min-width: 200px) and (max-width: 760px) {
+@media only screen and (max-width: 760px) {
   .top-navbar {
     // Make the navigation bar on the top of the page all the right properties
     display: flex;
@@ -319,13 +319,12 @@ nav {
 
   .hamburger {
     display: flex;
-    justify-content: space-between;
-    padding: 0 200px;
+    justify-content: space-evenly;
     a {
       padding: 4px;
       background-color: var(--citroengeel100);
       border-radius: 14px;
-      width: 40px;
+      min-width: 40px;
       svg {
         fill: var(--koraalrood100);
       }
@@ -333,24 +332,35 @@ nav {
   }
 
   .coming-exam {
+    flex-direction: column;
+    max-width: 90%;
+    .exam-info,
     .coming-image {
+      min-width: 100px;
+      width: auto;
+      max-width: 240px;
+    }
+    .coming-image {
+      width: auto;
+      height: 100px;
+      min-height: 100px;
+      max-height: 100px;
       // Size and position the image for the upcoming exam
       img {
-        width: 240px;
-        height: 180px;
-        max-height: 180px;
+        width: auto;
+        height: 100px;
+        min-height: 100px;
+        max-height: 100px;
         object-fit: cover;
       }
     }
     .exam-info {
+      border: none;
       p {
         // Size and position the image for the upcoming exam
-        line-height: 36px;
         width: 200px;
         min-width: 100px;
         max-width: 200px;
-        height: auto;
-        max-height: 60px;
       }
     }
 
@@ -367,31 +377,31 @@ nav {
     }
     .container-right {
       width: 100%;
-      font-size: 26px;
+      // font-size: 26px;
       label {
         line-height: 34px;
       }
       input {
         line-height: 26px;
-        font-size: 26px;
+        // font-size: 26px;
       }
     }
   }
 
   .custom-form {
-    font-size: 26px;
+    // font-size: 26px;
     label {
       line-height: 34px;
     }
     input {
       line-height: 26px;
-      font-size: 26px;
+      // font-size: 26px;
     }
   }
 
   form button {
     width: 240px;
     height: 80px;
-    font-size: larger;
+    // font-size: larger;
   }
 }
