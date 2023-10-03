@@ -207,6 +207,13 @@ label {
   }
 }
 
+.form-lower {
+  input {
+    border: 0px;
+    border-bottom: 2px solid var(--petrol100);
+  }
+}
+
 form {
   // Set the login/regitration form's properties
   width: 100%;
@@ -264,9 +271,26 @@ form button:not(.disabled):hover {
   bottom: 0;
 }
 
+.week {
+  p {
+    width: 40px;
+  }
+}
+
+.dayNames {
+  // margin-right: 60px;
+  span {
+    width: auto;
+    margin: 0 10px;
+  }
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .exam-form-page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   .container-left {
     width: 50%;
@@ -276,6 +300,49 @@ form button:not(.disabled):hover {
     width: 50%;
     // background-color: pink;
   }
+}
+.calendar {
+  margin-top: 2.5%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.week {
+  display: flex;
+  flex-direction: row;
+}
+
+.dag {
+  border-radius: 10px;
+  border: 2px var(--petrol100) solid;
+  width: 12.5vw;
+  height: 12.5vh;
+  position: relative;
+  margin: 5px 10px;
+  background-color: var(--koraalrood50);
+}
+
+.dag .daynum {
+  margin: 0;
+  position: absolute;
+  top: -7.5vh;
+  width: 100%;
+  padding: 1% 0px;
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.dag .exambanner:not(:empty) {
+  background-color: var(--koraalrood100);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  padding: 5px 0 10px 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 //#region Development helpers
@@ -370,7 +437,6 @@ nav {
   }
 
   .exam-form-page {
-    flex-direction: column;
     width: 100%;
     .container-left {
       width: 100%;
@@ -403,5 +469,11 @@ nav {
     width: 240px;
     height: 80px;
     // font-size: larger;
+  }
+
+  .dag {
+    margin: 1px 2.5px;
+    width: 16vw;
+    height: 15vh;
   }
 }

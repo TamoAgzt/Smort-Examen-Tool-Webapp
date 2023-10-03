@@ -21,7 +21,6 @@ export class AppComponent {
   title = 'ExamTool';
 
   onLoginPage: boolean = false;
-  // hamburgerMenu: HTMLElement = document.getElementById('hamburgerMenu');
 
   Hamburger: boolean = false;
   onCalendarPage: boolean = false;
