@@ -21,6 +21,8 @@ export class AppComponent {
   title = 'ExamTool';
 
   onLoginPage: boolean = false;
+
+  Hamburger: boolean = false;
   onCalendarPage: boolean = false;
 
   toggleOverview() {
@@ -30,6 +32,10 @@ export class AppComponent {
     if (!this.onCalendarPage) {
       this.router.navigate(['/overview']);
     }
+  }
+
+  ToggleHamburger() {
+    this.Hamburger = !this.Hamburger;
   }
 
   //#region Development helper stuff

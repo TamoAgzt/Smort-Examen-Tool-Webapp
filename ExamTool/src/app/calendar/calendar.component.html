@@ -1,15 +1,26 @@
 <div class="calendar">
-  <div>
-    <div
-      class="week week{{ week + 1 }}"
-      *ngFor="let index of [].constructor(4); let week = index"
-    >
+  <div class="calendar">
+    <div>
+      <div class="dayNames">
+        <span>Maandag</span>
+        <span>Dinsdag</span>
+        <span>Woensdag</span>
+        <span>Donderdag</span>
+        <span>Vrijdag</span>
+      </div>
       <div
-        class="dag dag{{ day + 1 }}"
-        *ngFor="let index of [].constructor(5); let day = index"
+        class="week week{{ week + 1 }}"
+        *ngFor="let index of [].constructor(4); let week = index"
       >
-        <p class="daynum">Werkdag {{ day + 1 }} {{Exams[day].Date}}</p>
-        <p class="exambanner">{{Exams[day].Time}} - {{Exams[day].ExamName}}</p>
+        <p>Week {{ week + 1 }}</p>
+        <div
+          class="dag dag{{ day + 1 }}"
+          *ngFor="let index of [].constructor(5); let day = index"
+        >
+          <p class="exambanner">
+            {{ Exams[day].Time }} - {{ Exams[day].ExamName }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -11,8 +11,7 @@ export interface Exam {
 
 export const Exams: Exam[] = [
   {
-    Image:
-      'https://torngems.nl/wp-content/uploads/2022/06/eotw_early_gameplay1.png',
+    Image: './PlaceHolderImages/output.jpg',
     ExamName: 'one',
     Subject: 'engels',
     Class: 'ai444',
@@ -22,7 +21,7 @@ export const Exams: Exam[] = [
     Time: '10:00',
   },
   {
-    Image: 'https://torngems.nl/wp-content/uploads/2023/08/Album-cover.png',
+    Image: './PlaceHolderImages/output(1).jpg',
     ExamName: 'burgers',
     Subject: 'burgerschap',
     Class: 'ai444',
@@ -32,7 +31,7 @@ export const Exams: Exam[] = [
     Time: '12:30',
   },
   {
-    Image: 'https://torngems.nl/wp-content/uploads/2023/06/Runaway1.png',
+    Image: './PlaceHolderImages/output(2).jpg',
     ExamName: 'neue tag',
     Subject: 'duits',
     Class: 'ai444',
@@ -42,7 +41,7 @@ export const Exams: Exam[] = [
     Time: '09:00',
   },
   {
-    Image: 'https://torngems.nl/wp-content/uploads/2023/08/Album-cover.png',
+    Image: './PlaceHolderImages/output(3).jpg',
     ExamName: 'two',
     Subject: 'engels',
     Class: 'ai444',
@@ -52,7 +51,7 @@ export const Exams: Exam[] = [
     Time: '10:00',
   },
   {
-    Image: 'https://torngems.nl/wp-content/uploads/2023/06/20220507.png',
+    Image: './PlaceHolderImages/output(4).jpg',
     ExamName: 'one-two lezen',
     Subject: 'engels',
     Class: 'ai444',
