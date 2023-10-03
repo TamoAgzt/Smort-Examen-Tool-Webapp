@@ -51,11 +51,18 @@
 <!-- =================== -->
 
 <div class="top-navbar desktop" *ngIf="!onLoginPage">
-  <img
-    class="logo-image"
-    src="../assets/VistaWeblogos/VISTA_Logo_Liggend_koraal_RGB.png"
-    alt="logo"
-  />
+  <a
+    class="button"
+    routerLink="/overview"
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+  >
+    <img
+      class="logo-image"
+      src="../assets/VistaWeblogos/VISTA_Logo_Liggend_koraal_RGB.png"
+      alt="logo"
+    />
+  </a>
 
   <div class="view-toggle-container">
     <a
