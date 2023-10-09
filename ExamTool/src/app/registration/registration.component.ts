@@ -6,9 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
+  FirstName: string = '';
+  LastName: string = '';
   Email: string = '';
   Password: string = '';
-  UserName: string = '';
+  Klas: string = '';
+  apiData: any;
 
-  SignUp() {}
+  constructor(private http: HttpClient) {}
+
+  SignUp() {
+    this.apiData = {
+      naam: this.FirstName,
+      achternaam: this.LastName,
+      email: this.Email,
+      wachtwoord: this.Password,
+      klass: this.Klas,
+    };
+    this.http.post<any>(`http://devilskey.nl:7234/ÇreateUser`, this.apiData);
+  }
 }
