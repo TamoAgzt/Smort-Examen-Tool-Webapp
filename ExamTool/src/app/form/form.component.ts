@@ -17,4 +17,6 @@ export class FormComponent {
   Supervisor: string = '';
   Date: string = '';
   Time: string = '';
+
+  constructor() {}
 }
