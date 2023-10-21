@@ -12,7 +12,9 @@ import { OverviewComponent } from './overview/overview.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormComponent } from './form/form.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -25,12 +27,12 @@ import { HttpClient } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
     HttpClientModule,
+    CommonModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'overview', component: OverviewComponent },

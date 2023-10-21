@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Statics } from './Statics';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+  staticData: typeof Statics = Statics;
+
   constructor(private router: Router) {
     router.events.subscribe((val) => {
       if (!(val instanceof NavigationEnd)) {
@@ -50,4 +54,11 @@ export class AppComponent {
     this.developmentNavigator = !this.developmentNavigator;
   }
   //#endregion
+
+  Logout(){
+    window.localStorage.setItem("Vista.Examen.Token.Planner", "");
+    window.localStorage.setItem("Vista.Examen.Rol.Planner", "");
+    Statics.Token = "";
+    Statics.Rol = "";
+  }
 }

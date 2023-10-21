@@ -1,28 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { EnvVars } from '../Env';
+import { Klas } from '../Objects/KlasObject';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent {
-  FirstName: string = '';
-  LastName: string = '';
-  Email: string = '';
-  Password: string = '';
-  Klas: string = '';
-  apiData: any;
+export class RegistrationComponent implements OnInit{
+  data = {
+    naam: '',
+    achternaam: '',
+    email: '',
+    wachtwoord: '',
+    klass: ''
+  }
 
-  constructor(private http: HttpClient) {}
+  Klasses: any;
+
+  constructor (private http:HttpClient) {   }
+
+  ngOnInit(): void {
+    this.http.get<Klas>(EnvVars.Api + "SelectAllKlasses").subscribe((data:Klas) => {
+      console.log(data)
+      this.Klasses = data;
+    });
+  }
 
   SignUp() {
-    this.apiData = {
-      naam: this.FirstName,
-      achternaam: this.LastName,
-      email: this.Email,
-      wachtwoord: this.Password,
-      klass: this.Klas,
-    };
-    this.http.post<any>(`http://devilskey.nl:7234/ÇreateUser`, this.apiData);
+    console.log(this.data.klass);
+    this.http.post(EnvVars.Api + "ÇreateUser", this.data).subscribe((data) => {
+    });
   }
 }

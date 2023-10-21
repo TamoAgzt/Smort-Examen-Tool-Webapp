@@ -1,39 +1,60 @@
 <form class="enter-form">
   <div class="custom-form center">
     <div class="form-left">
+      <label for="Voornaam">Voornaam</label> <br />
+      <label for="Achternaam">Achternaam</label> <br />
       <label for="Email">Email</label> <br />
-      <label for="Username">Gebruikersnaam</label> <br />
-      <label for="Password">Wachtwoord</label>
+      <label for="Password">Wachtwoord</label> <br />
+      <label for="Password">SelectKlass</label> <br />
+
     </div>
     <div class="form-right">
+        <input
+          id="Voornaam"
+          type="Voornaam"
+          [(ngModel)]="data.naam"
+          name="Voornaam"
+          title="Voornaam"
+          placeholder="Voornaam"
+        />
+      <br />     
+       <input
+          id="Achternaam"
+          type="Achternaam"
+          [(ngModel)]="data.achternaam"
+          name="Achternaam"
+          title="Achternaam"
+          placeholder="Achternaam"
+        />
+    <br />
+
       <input
         id="Email"
         type="email"
-        [(ngModel)]="Email"
+        [(ngModel)]="data.email"
         name="Email"
         title="Email"
         placeholder="Email"
       />
       <br />
-      <input
-        id="Username"
-        type="Username"
-        [(ngModel)]="UserName"
-        name="Username"
-        title="Leerling nummer"
-        placeholder="Leerling nummer"
-      />
-      <br />
+
       <input
         id="Password"
         type="password"
-        [(ngModel)]="Password"
+        [(ngModel)]="data.wachtwoord"
         name="Password"
         title="Wachtwoord"
         placeholder="Wachtwoord"
-      />
+      />    <br />
+
+      <select  [(ngModel)]="data.klass" name="data.klass" >
+        <option *ngFor="let MentorKlas of Klasses" [value]="MentorKlas.Naam">{{MentorKlas.Naam}}</option>
+      </select>
+      
     </div>
     <br />
+
+    
   </div>
 
   <button class="form-button" type="submit" (click)="SignUp()">
