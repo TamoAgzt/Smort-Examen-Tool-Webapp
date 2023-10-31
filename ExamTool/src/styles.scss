@@ -95,30 +95,43 @@ label {
   svg {
     fill: white;
   }
-  .add-button {
-    svg {
-      fill: var(--koraalrood100);
-    }
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-    max-width: 40px;
-    max-height: 40px;
-    border-radius: 50%;
-    margin: auto 0;
+}
 
-    background-color: var(--citroengeel100);
+.add-button {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  svg {
+    fill: var(--koraalrood100);
   }
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  background-color: var(--citroengeel100);
+}
+.form-button {
+  svg {
+    fill: var(--koraalrood100);
+  }
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  margin: auto 0;
+
+  background-color: var(--citroengeel100);
 }
 
 .log-out {
   // For simplicity, we add the log out button separately to the navigation bar on the top of the page
   color: white;
-  position: absolute;
-  top: 0px;
-  margin: 30px 200px 0 0;
-  right: 0px;
   :hover {
     cursor: pointer;
   }
