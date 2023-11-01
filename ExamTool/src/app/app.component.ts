@@ -8,7 +8,6 @@ import { Statics } from './Statics';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   staticData: typeof Statics = Statics;
 
   constructor(private router: Router) {
@@ -45,23 +44,10 @@ export class AppComponent {
     this.Hamburger = !this.Hamburger;
   }
 
-  //#region Development helper stuff
-  developmentNavigator = false;
-
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (event.key != 'ArrowDown') {
-      return;
-    }
-
-    this.developmentNavigator = !this.developmentNavigator;
-  }
-  //#endregion
-
-  Logout(){
-    window.localStorage.setItem("Vista.Examen.Token.Planner", "");
-    window.localStorage.setItem("Vista.Examen.Rol.Planner", "");
-    Statics.Token = "";
-    Statics.Rol = "";
+  Logout() {
+    window.localStorage.setItem('Vista.Examen.Token.Planner', '');
+    window.localStorage.setItem('Vista.Examen.Rol.Planner', '');
+    Statics.Token = '';
+    Statics.Rol = '';
   }
 }
