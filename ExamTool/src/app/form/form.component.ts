@@ -84,12 +84,12 @@ export class FormComponent implements OnInit {
   }
 
   ClassData = {
-    naam: '',
-    mentor: '',
+    naam: this.Klas,
+    mentor: this.Mentor,
   };
 
   ClassRoomData = {
-    examenLokaal: '',
+    examenLokaal: this.Lokaal,
   };
 
   SaveClass() {
