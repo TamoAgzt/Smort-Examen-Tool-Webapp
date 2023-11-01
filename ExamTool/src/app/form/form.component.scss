@@ -12,15 +12,9 @@
   }
 }
 
-[name="agendaItem.klas_Id"] {
-  width: 70%;
-}
-
-[name="agendaItem.lokaal_Id"] {
-  width: 70%;
-}
-
-[name="Exame.toezichthouder_Id"] {
+select {
+  border: 0px;
+  border-bottom: 2px solid var(--petrol100);
   width: 70%;
 }
 
