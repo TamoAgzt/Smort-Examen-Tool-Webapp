@@ -12,6 +12,9 @@ import { OverviewComponent } from './overview/overview.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormComponent } from './form/form.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { RegistrationComponent } from './registration/registration.component';
     ReactiveFormsModule,
     MatSlideToggleModule,
     HttpClientModule,
+    CommonModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'overview', component: OverviewComponent },

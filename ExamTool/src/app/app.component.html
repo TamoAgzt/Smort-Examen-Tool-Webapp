@@ -34,15 +34,29 @@
       Kalender
     </a>
   </div>
-  <a
-    *ngIf="!onLoginPage"
-    class="log-out desktop"
-    routerLink="/login"
-    routerLinkActive="activebutton"
-    ariaCurrentWhenActive="page"
-  >
-    Uitloggen
-  </a>
+  <div *ngIf="staticData.Token == ''">
+    <a
+      *ngIf="!onLoginPage"
+      class="log-out desktop"
+      routerLink="/login"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+    >
+      Login in
+    </a>
+  </div>
+
+  <div *ngIf="staticData.Token != ''">
+    <a
+      class="log-out desktop"
+      routerLink="/login"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+      (click)="Logout()"
+    >
+      Log Out
+    </a>
+  </div>
 </div>
 
 <div class="top-navbar mobile" *ngIf="!onLoginPage">

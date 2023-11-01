@@ -69,7 +69,7 @@
         <input
           id="ExamName"
           type="text"
-          [(ngModel)]="ExamName"
+          [(ngModel)]="Exame.naam_Examen"
           name="ExamName"
           title="Examen Naam"
           placeholder="Examen Naam"
@@ -78,43 +78,29 @@
         <input
           id="Subject"
           type="text"
-          [(ngModel)]="Subject"
+          [(ngModel)]="Exame.vak_Examen"
           name="Subject"
           title="Vak"
           placeholder="Vak"
         />
         <br />
-        <input
-          id="Class"
-          type="text"
-          [(ngModel)]="Class"
-          name="Class"
-          title="Klas"
-          placeholder="Klas"
-        />
+        <select  [(ngModel)]="agendaItem.klas_Id" name="agendaItem.klas_Id" >
+          <option *ngFor="let Klas of klasses" [value]="Klas.Id">{{Klas.Naam}}</option>
+        </select>
         <br />
-        <input
-          id="Room"
-          type="text"
-          [(ngModel)]="Room"
-          name="Room"
-          title="Lokaal"
-          placeholder="Lokaal"
-        />
+          
+        <select  [(ngModel)]="agendaItem.lokaal_Id" name="agendaItem.lokaal_Id" >
+          <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">{{lokaal.Lokaal}}</option>
+        </select>
         <br />
-        <input
-          id="Supervisor"
-          type="text"
-          [(ngModel)]="Supervisor"
-          name="Supervisor"
-          title="Toezichthouder"
-          placeholder="Toezichthouder"
-        />
+        <select  [(ngModel)]="Exame.toezichthouder_Id" name="Exame.toezichthouder_Id" >
+          <option *ngFor="let toezicht of Toezichthouders" [value]="toezicht.Id">{{toezicht.Naam}}, {{toezicht.Achternaam}}</option>
+        </select>
         <br />
         <input
           id="Date"
           type="text"
-          [(ngModel)]="Date"
+          [(ngModel)]="agendaItem.beginTijd"
           name="Date"
           title="Datum"
           placeholder="Datum"
@@ -123,7 +109,7 @@
         <input
           id="Time"
           type="text"
-          [(ngModel)]="Time"
+          [(ngModel)]="agendaItem.eindTijd"
           name="Time"
           title="Tijdstip"
           placeholder="Tijdstip"
@@ -131,6 +117,6 @@
       </div>
     </div>
 
-    <button class="form-button" type="submit">Opslaan</button>
+    <button class="form-button"  type="submit" (click)="save()">Opslaan</button>
   </form>
 </div>
