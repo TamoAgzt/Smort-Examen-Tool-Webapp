@@ -31,7 +31,6 @@ export class FormComponent implements OnInit {
 
   Exams = Exams;
   Image: string = '';
-
   constructor(private http: HttpClient) {
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
@@ -65,5 +64,55 @@ export class FormComponent implements OnInit {
     console.log(this.Exame);
     console.log(this.agendaItem);
     console.log('Save');
+  }
+
+  AddPopup: boolean = false;
+  AddClass: boolean = false;
+  AddClassRoom: boolean = false;
+
+  Klas: string = '';
+  Mentor: string = '';
+  Lokaal: string = '';
+
+  ToggleAddClass() {
+    this.AddPopup = true;
+    this.AddClass = true;
+  }
+  ToggleAddClassRoom() {
+    this.AddPopup = true;
+    this.AddClassRoom = true;
+  }
+
+  ClassData = {
+    naam: '',
+    mentor: '',
+  };
+
+  ClassRoomData = {
+    examenLokaal: '',
+  };
+
+  SaveClass() {
+    this.http
+      .post(EnvVars.Api + 'CreateKlas', this.ClassData)
+      .subscribe((ClassData) => {});
+
+    this.AddPopup = false;
+    this.AddClass = false;
+  }
+
+  SaveClassRoom() {
+    this.http
+      .post(EnvVars.Api + 'AddLokaal', this.ClassRoomData)
+      .subscribe((ClassRoomData) => {});
+
+    this.AddPopup = false;
+    this.AddClassRoom = false;
+  }
+
+  CancelAdding() {
+    this.AddPopup = false;
+    this.AddClassRoom = false;
+    this.AddClass = false;
   }
 }

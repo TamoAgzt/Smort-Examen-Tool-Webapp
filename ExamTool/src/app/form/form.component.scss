@@ -1,0 +1,43 @@
+.form-edit {
+  width: 15%;
+  height: 100%;
+  margin: auto 2px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  :hover {
+    cursor: pointer;
+    fill: var(--koraalrood100);
+  }
+}
+
+[name="agendaItem.klas_Id"] {
+  width: 70%;
+}
+
+[name="agendaItem.lokaal_Id"] {
+  width: 70%;
+}
+
+[name="Exame.toezichthouder_Id"] {
+  width: 70%;
+}
+
+.popup-container {
+  top: 15%;
+  margin: auto 15%;
+  width: 70%;
+  height: 70%;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px black solid;
+  border-radius: 20px;
+}
+
+.cancel {
+  :hover {
+    cursor: pointer;
+    color: var(--koraalrood100);
+  }
+}

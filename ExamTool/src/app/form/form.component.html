@@ -49,14 +49,6 @@
       </div>
 
       <div class="form-lower">
-        <!-- <input
-      id="Image"
-      type="file"
-      [(ngModel)]="Image"
-      name="Afbeelding"
-      placeholder="Afbeelding"
-      onchange="console.log(event.target.files)"
-    /> -->
         <input
           id="Image"
           type="text"
@@ -83,20 +75,71 @@
           title="Vak"
           placeholder="Vak"
         />
+
         <br />
-        <select  [(ngModel)]="agendaItem.klas_Id" name="agendaItem.klas_Id" >
-          <option *ngFor="let Klas of klasses" [value]="Klas.Id">{{Klas.Naam}}</option>
+
+        <select [(ngModel)]="agendaItem.klas_Id" name="agendaItem.klas_Id">
+          <option *ngFor="let Klas of klasses" [value]="Klas.Id">
+            {{ Klas.Naam }}
+          </option>
         </select>
+
+        <a
+          class="form-plus form-edit"
+          aria-label="Add class"
+          (click)="ToggleAddClass()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+          </svg>
+        </a>
+        <a class="form-minus form-edit" aria-label="Remove class room">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>minus-thick</title>
+            <path d="M20 14H4V10H20" />
+          </svg>
+        </a>
+
         <br />
-          
-        <select  [(ngModel)]="agendaItem.lokaal_Id" name="agendaItem.lokaal_Id" >
-          <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">{{lokaal.Lokaal}}</option>
+
+        <select [(ngModel)]="agendaItem.lokaal_Id" name="agendaItem.lokaal_Id">
+          <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
+            {{ lokaal.Lokaal }}
+          </option>
         </select>
+
+        <a
+          class="form-plus form-edit"
+          aria-label="Add class room"
+          (click)="ToggleAddClassRoom()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+          </svg>
+        </a>
+        <a class="form-minus form-edit" aria-label="Remove class room">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>minus-thick</title>
+            <path d="M20 14H4V10H20" />
+          </svg>
+        </a>
+
         <br />
-        <select  [(ngModel)]="Exame.toezichthouder_Id" name="Exame.toezichthouder_Id" >
-          <option *ngFor="let toezicht of Toezichthouders" [value]="toezicht.Id">{{toezicht.Naam}}, {{toezicht.Achternaam}}</option>
+
+        <select
+          [(ngModel)]="Exame.toezichthouder_Id"
+          name="Exame.toezichthouder_Id"
+        >
+          <option
+            *ngFor="let toezicht of Toezichthouders"
+            [value]="toezicht.Id"
+          >
+            {{ toezicht.Naam }}, {{ toezicht.Achternaam }}
+          </option>
         </select>
+
         <br />
+
         <input
           id="Date"
           type="text"
@@ -117,6 +160,75 @@
       </div>
     </div>
 
-    <button class="form-button"  type="submit" (click)="save()">Opslaan</button>
+    <button class="form-button" type="submit" (click)="save()">Opslaan</button>
   </form>
+</div>
+
+<div class="popup-container" *ngIf="AddPopup">
+  <div class="add-class-container" *ngIf="AddClass">
+    <form class="exam-form">
+      <div class="custom-form center">
+        <div class="form-left">
+          <label for="Klas">Klas</label>
+          <br />
+          <label for="Mentor">Mentor</label>
+          <br />
+        </div>
+
+        <div class="form-lower">
+          <input
+            id="Class"
+            type="text"
+            [(ngModel)]="Klas"
+            name="Klas"
+            title="Klas"
+            placeholder="Klas"
+          />
+          <br />
+          <input
+            id="Mentor"
+            type="text"
+            [(ngModel)]="Mentor"
+            name="Mentor"
+            title="Mentor"
+            placeholder="Mentor"
+          />
+        </div>
+      </div>
+
+      <button class="form-button" type="submit" (click)="SaveClass()">
+        Opslaan
+      </button>
+      <br />
+      <a (click)="CancelAdding()">Annuleren</a>
+    </form>
+  </div>
+
+  <div class="add-classroom-container" *ngIf="AddClassRoom">
+    <form class="exam-form">
+      <div class="custom-form center">
+        <div class="form-left">
+          <label for="ExamName">Lokaal</label>
+          <br />
+        </div>
+
+        <div class="form-lower">
+          <input
+            id="ClassRoom"
+            type="text"
+            [(ngModel)]="Lokaal"
+            name="Lokaal"
+            title="Klas lokaal"
+            placeholder="Klas lokaal"
+          />
+        </div>
+      </div>
+
+      <button class="form-button" type="submit" (click)="SaveClassRoom()">
+        Opslaan
+      </button>
+      <br />
+      <a class="cancel" (click)="CancelAdding()">Annuleren</a>
+    </form>
+  </div>
 </div>
