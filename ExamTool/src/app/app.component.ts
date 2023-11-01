@@ -19,12 +19,15 @@ export class AppComponent {
       this.onLoginPage =
         router.url == '/login' || router.url == '/registration';
       this.onCalendarPage = router.url == '/calendar';
+
+      this.addingExam = router.url == '/form';
     });
   }
 
   title = 'ExamTool';
 
   onLoginPage: boolean = false;
+  addingExam: boolean = false;
 
   Hamburger: boolean = false;
   onCalendarPage: boolean = false;
