@@ -358,23 +358,6 @@ form button:not(.disabled):hover {
   transform: translateY(-50%);
 }
 
-//#region Development helpers
-//=================================
-// Development helpers
-//=================================
-nav {
-  position: absolute;
-  display: flex;
-  z-index: 9001;
-  flex-direction: column;
-  right: 0px;
-  bottom: 0px;
-  background-color: rgba(128, 128, 128, 0.5);
-  padding: 10px;
-  text-decoration: none;
-}
-//#endregion
-
 // Mobile view
 @media only screen and (max-width: 760px) {
   .top-navbar {
