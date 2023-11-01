@@ -9,15 +9,15 @@ import { Exam, Exams } from '../../assets/placeholder_exams';
 })
 export class CalendarComponent {
   constructor(private http: HttpClient) {
-    this.GetData()
+    this.GetData();
   }
 
-  Exams:Exam[] = Exams;
+  Exams: Exam[] = Exams;
   ResponseData: any = null;
 
   GetData() {
     this.http.get('http://httpstat.us/418').subscribe((data) => {
-      console.table(data)
+      console.table(data);
       this.ResponseData = data;
     });
   }

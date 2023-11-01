@@ -11,58 +11,59 @@ import { Statics } from '../Statics';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-
   agendaItem = {
     klas_Id: 0,
     exameId: 0,
     lokaal_Id: 0,
-    beginTijd: "",
-    eindTijd: ""
-  }
+    beginTijd: '',
+    eindTijd: '',
+  };
 
   Exame = {
     toezichthouder_Id: 0,
-    naam_Examen: "",
-    vak_Examen: ""
-  }
+    naam_Examen: '',
+    vak_Examen: '',
+  };
 
-  Toezichthouders:any;
-  klasses:any;
-  lokaal:any;
-
+  Toezichthouders: any;
+  klasses: any;
+  lokaal: any;
 
   Exams = Exams;
   Image: string = '';
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     const header = new HttpHeaders({
-      'Authorization': `Bearer ${Statics.Token}`
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    this.http
+      .get<any>(EnvVars.Api + 'SelectAllKlasses')
+      .subscribe((data: any) => {
+        console.log(data);
+        this.klasses = data;
       });
 
-    this.http.get<any>(EnvVars.Api + "SelectAllKlasses" ).subscribe((data:any) => {
-      console.log(data)
-      this.klasses = data;
-    });
+    this.http
+      .get<any>(EnvVars.Api + 'GetToeZichtHouder', { headers: header })
+      .subscribe((data: any) => {
+        console.log(data);
+        this.Toezichthouders = data;
+      });
 
-    this.http.get<any>(EnvVars.Api + "GetToeZichtHouder", { headers: header}).subscribe((data:any) => {
-      console.log(data)
-      this.Toezichthouders = data;
-    });
-
-    this.http.get<any>(EnvVars.Api + "GetLokaal",  { headers: header}).subscribe((data:any) => {
-      console.log(data)
-      this.lokaal = data;
-    });
-
+    this.http
+      .get<any>(EnvVars.Api + 'GetLokaal', { headers: header })
+      .subscribe((data: any) => {
+        console.log(data);
+        this.lokaal = data;
+      });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  save(){
+  save() {
     console.log(this.Exame);
-    console.log(this.agendaItem)
-      console.log("Save");
+    console.log(this.agendaItem);
+    console.log('Save');
   }
-
 }
