@@ -93,17 +93,37 @@ export class FormComponent implements OnInit {
   };
 
   SaveClass() {
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
     this.http
-      .post(EnvVars.Api + 'CreateKlas', this.ClassData)
+      .post(EnvVars.Api + 'CreateKlas', this.ClassData, { headers: header })
       .subscribe((ClassData) => {});
 
     this.AddPopup = false;
     this.AddClass = false;
   }
 
-  SaveClassRoom() {
+  RemoveClass(){
+    console.log(this.agendaItem.klas_Id)
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${Statics.Token}`,
+    });
+
     this.http
-      .post(EnvVars.Api + 'AddLokaal', this.ClassRoomData)
+      .delete(EnvVars.Api + 'DeleteKlas', { headers: header, body: this.agendaItem.klas_Id}).subscribe();
+
+  }
+
+  SaveClassRoom() {
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    this.http
+      .post(EnvVars.Api + 'AddLokaal', this.ClassRoomData, { headers: header })
       .subscribe((ClassRoomData) => {});
 
     this.AddPopup = false;

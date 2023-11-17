@@ -93,9 +93,8 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a class="form-minus form-edit" aria-label="Remove class room">
+        <a class="form-minus form-edit" aria-label="Remove class room" (click)="RemoveClass()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <title>minus-thick</title>
             <path d="M20 14H4V10H20" />
           </svg>
         </a>
@@ -117,9 +116,12 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a class="form-minus form-edit" aria-label="Remove class room">
+        <a 
+        class="form-minus form-edit"
+         aria-label="Remove class room" 
+         (click)="RemoveClass()"
+         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <title>minus-thick</title>
             <path d="M20 14H4V10H20" />
           </svg>
         </a>
@@ -142,7 +144,7 @@
 
         <input
           id="Date"
-          type="text"
+          type="Date"
           [(ngModel)]="agendaItem.beginTijd"
           name="Date"
           title="Datum"
@@ -151,9 +153,9 @@
         <br />
         <input
           id="Time"
-          type="text"
+          type="time"
           [(ngModel)]="agendaItem.eindTijd"
-          name="Time"
+          name="date"
           title="Tijdstip"
           placeholder="Tijdstip"
         />
@@ -179,7 +181,7 @@
           <input
             id="Class"
             type="text"
-            [(ngModel)]="Klas"
+            [(ngModel)]="ClassData.naam"
             name="Klas"
             title="Klas"
             placeholder="Klas"
@@ -188,7 +190,7 @@
           <input
             id="Mentor"
             type="text"
-            [(ngModel)]="Mentor"
+            [(ngModel)]="ClassData.mentor"
             name="Mentor"
             title="Mentor"
             placeholder="Mentor"
