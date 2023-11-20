@@ -31,7 +31,6 @@ export class FormComponent implements OnInit {
 
   Exams = Exams;
   Image: string = '';
-
   constructor(private http: HttpClient) {
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
@@ -65,5 +64,84 @@ export class FormComponent implements OnInit {
     console.log(this.Exame);
     console.log(this.agendaItem);
     console.log('Save');
+  }
+
+  AddPopup: boolean = false;
+  AddClass: boolean = false;
+  AddClassRoom: boolean = false;
+
+  Klas: string = '';
+  Mentor: string = '';
+  Lokaal: string = '';
+  NewLokaal: string = '';
+
+  ToggleAddClass() {
+    this.AddPopup = true;
+    this.AddClass = true;
+  }
+  ToggleAddClassRoom() {
+    this.AddPopup = true;
+    this.AddClassRoom = true;
+  }
+
+  ClassData = {
+    naam: this.Klas,
+    mentor: this.Mentor,
+  };
+
+  ClassRoomData = {
+    examenLokaal: "",
+  };
+
+  SaveClass() {
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    this.http
+      .post(EnvVars.Api + 'CreateKlas', this.ClassData, { headers: header })
+      .subscribe((ClassData) => {});
+
+    this.AddPopup = false;
+    this.AddClass = false;
+  }
+
+  RemoveClass(){
+    console.log(this.agendaItem.klas_Id)
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${Statics.Token}`,
+    });
+
+    this.http
+      .delete(EnvVars.Api + 'DeleteKlas', { headers: header, body: this.agendaItem.klas_Id}).subscribe();
+
+  }
+
+  SaveClassRoom() {
+
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    console.log(this.NewLokaal);
+
+    if(this.NewLokaal == "")
+     return;
+
+    this.ClassRoomData.examenLokaal = this.NewLokaal;
+
+    this.http
+      .post(EnvVars.Api + 'AddLokaal', this.ClassRoomData, { headers: header })
+      .subscribe((ClassRoomData) => {});
+
+    this.AddPopup = false;
+    this.AddClassRoom = false;
+  }
+
+  CancelAdding() {
+    this.AddPopup = false;
+    this.AddClassRoom = false;
+    this.AddClass = false;
   }
 }
