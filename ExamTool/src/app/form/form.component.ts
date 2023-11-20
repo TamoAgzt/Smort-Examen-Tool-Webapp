@@ -73,6 +73,7 @@ export class FormComponent implements OnInit {
   Klas: string = '';
   Mentor: string = '';
   Lokaal: string = '';
+  NewLokaal: string = '';
 
   ToggleAddClass() {
     this.AddPopup = true;
@@ -89,7 +90,7 @@ export class FormComponent implements OnInit {
   };
 
   ClassRoomData = {
-    examenLokaal: this.Lokaal,
+    examenLokaal: "",
   };
 
   SaveClass() {
@@ -118,9 +119,17 @@ export class FormComponent implements OnInit {
   }
 
   SaveClassRoom() {
+
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
+
+    console.log(this.NewLokaal);
+
+    if(this.NewLokaal == "")
+     return;
+
+    this.ClassRoomData.examenLokaal = this.NewLokaal;
 
     this.http
       .post(EnvVars.Api + 'AddLokaal', this.ClassRoomData, { headers: header })

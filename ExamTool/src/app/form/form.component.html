@@ -42,9 +42,9 @@
         <br />
         <label for="ExamName">Toezichthouder</label>
         <br />
-        <label for="ExamName">Datum</label>
+        <label for="ExamName">beginTijd</label>
         <br />
-        <label for="ExamName">Tijdstip</label>
+        <label for="ExamName">eindTijd</label>
         <br />
       </div>
 
@@ -143,8 +143,8 @@
         <br />
 
         <input
-          id="Date"
-          type="Date"
+          id="beginTijd"
+          type="datetime-local"
           [(ngModel)]="agendaItem.beginTijd"
           name="Date"
           title="Datum"
@@ -152,12 +152,12 @@
         />
         <br />
         <input
-          id="Time"
-          type="time"
+          id="eindTijd"
+          type="datetime-local"
           [(ngModel)]="agendaItem.eindTijd"
-          name="date"
-          title="Tijdstip"
-          placeholder="Tijdstip"
+          name="datetime"
+          title="Datum"
+          placeholder="Datum"
         />
       </div>
     </div>
@@ -218,7 +218,7 @@
           <input
             id="ClassRoom"
             type="text"
-            [(ngModel)]="Lokaal"
+            [(ngModel)]="NewLokaal"
             name="Lokaal"
             title="Klas lokaal"
             placeholder="Klas lokaal"
