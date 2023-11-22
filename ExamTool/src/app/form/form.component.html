@@ -1,27 +1,39 @@
 <!-- <div class="exam-form-page"> -->
 <div class="container-left">
-  <div class="calendar">
-    <div>
-      <div class="dayNames">
-        <span>Maandag</span>
-        <span>Dinsdag</span>
-        <span>Woensdag</span>
-        <span>Donderdag</span>
-        <span>Vrijdag</span>
-      </div>
-      <div
-        class="week week{{ week + 1 }}"
-        *ngFor="let index of [].constructor(4); let week = index"
-      >
-        <p>Week {{ week + 1 }}</p>
-        <div
-          class="dag dag{{ day + 1 }}"
-          *ngFor="let index of [].constructor(5); let day = index"
-        >
-          <p class="exambanner">
-            {{ Exams[day].Time }} - {{ Exams[day].ExamName }}
-          </p>
+  <div class="calender center">
+    <div class="calendar-container">
+      <header class="calendar-header">
+        <div class="calendar-navigation">
+          <span id="calendar-prev" (click)="prevMonth()">
+            <i class="arrow arrow-left"></i>
+          </span>
         </div>
+        <p class="calendar-current-date">
+          {{ this.year }}<br />
+          {{ this.months[this.month] }}
+        </p>
+        <div class="calendar-navigation">
+          <span id="calendar-next" (click)="nextMonth()">
+            <i class="arrow arrow-right"></i>
+          </span>
+        </div>
+      </header>
+
+      <div class="calendar-body">
+        <ul class="calendar-weekdays">
+          <li>Zo</li>
+          <li>Ma</li>
+          <li>Di</li>
+          <li>Wo</li>
+          <li>Do</li>
+          <li>Vr</li>
+          <li>Za</li>
+        </ul>
+        <ul class="calendar-dates">
+          <li *ngFor="let date of dates" [class]="date.class">
+            {{ date.value }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -93,7 +105,11 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a class="form-minus form-edit" aria-label="Remove class room" (click)="RemoveClass()">
+        <a
+          class="form-minus form-edit"
+          aria-label="Remove class room"
+          (click)="RemoveClass()"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20 14H4V10H20" />
           </svg>
@@ -116,11 +132,11 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a 
-        class="form-minus form-edit"
-         aria-label="Remove class room" 
-         (click)="RemoveClass()"
-         >
+        <a
+          class="form-minus form-edit"
+          aria-label="Remove class room"
+          (click)="RemoveClass()"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20 14H4V10H20" />
           </svg>

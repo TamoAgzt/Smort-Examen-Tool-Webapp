@@ -2,7 +2,7 @@
   <div class="calendar-container">
     <header class="calendar-header">
       <div class="calendar-navigation">
-        <span id="calendar-prev">
+        <span id="calendar-prev" (click)="prevMonth()">
           <i class="arrow arrow-left"></i>
         </span>
       </div>
@@ -11,7 +11,7 @@
         {{ this.months[this.month] }}
       </p>
       <div class="calendar-navigation">
-        <span id="calendar-next">
+        <span id="calendar-next" (click)="nextMonth()">
           <i class="arrow arrow-right"></i>
         </span>
       </div>
@@ -27,7 +27,11 @@
         <li>Vr</li>
         <li>Za</li>
       </ul>
-      <ul class="calendar-dates" [innerHtml]="datum"></ul>
+      <ul class="calendar-dates">
+        <li *ngFor="let date of dates" [class]="date.class">
+          {{ date.value }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
