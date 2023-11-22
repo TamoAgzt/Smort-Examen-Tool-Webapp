@@ -314,13 +314,13 @@ form button:not(.disabled):hover {
     // background-color: pink;
   }
 }
-.calendar {
-  margin-top: 2.5%;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
+// .calendar {
+//   margin-top: 2.5%;
+//   width: 100%;
+//   text-align: center;
+//   display: flex;
+//   justify-content: center;
+// }
 
 .week {
   display: flex;
@@ -375,7 +375,6 @@ form button:not(.disabled):hover {
 
   .desktop {
     display: none;
-
   }
   .mobile {
     display: flex;
