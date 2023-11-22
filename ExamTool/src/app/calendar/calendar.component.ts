@@ -27,11 +27,11 @@ export class CalendarComponent {
   year: number = this.date.getFullYear();
   month: number = this.date.getMonth();
 
-  day = document.querySelector('.calendar-dates');
+  day = document.querySelector<HTMLElement>('.calendar-dates');
 
   currentDate = document.querySelector('.calendar-current-date');
 
-  prenexIcons = document.querySelectorAll('.calendar-navigation span');
+  navIcons = document.querySelectorAll('.calendar-navigation span');
 
   months = [
     'Januari',
@@ -82,4 +82,59 @@ export class CalendarComponent {
       this.datum += `<li class="inactive">${i - dayend + 1}</li>`;
     }
   };
+
+  // const prevMonth = document.querySelector("calendar-prev");
+  // const nextMonth = document.querySelector("calendar-next");
+  // prevMonth.addEventListener("click", prevMonth);
+  // nextMonth.addEventListener("click", nextMonth);
+
+  // prevMonth(){
+  //   this.month - 1
+  //   if (this.month < 0 || this.month > 11) {
+
+  //     // Set the date to the first day of the
+  //     // month with the new year
+  //     this.date = new Date(this.year, this.month, new Date().getDate());
+
+  //     // Set the year to the new year
+  //     this.year = this.date.getFullYear();
+
+  //     // Set the month to the new month
+  //     this.month = this.date.getMonth();
+  //   }
+
+  //   else {
+  //     // Set the date to the current date
+  //     this.date = new Date();
+  //   }
+
+  //   // Call the manipulate function to
+  //   // update the calendar display
+  //   this.manipulate();
+  // }
+
+  // nextMonth(){
+  //   this.month + 1
+  //   if (this.month < 0 || this.month > 11) {
+
+  //     // Set the date to the first day of the
+  //     // month with the new year
+  //     this.date = new Date(this.year, this.month, new Date().getDate());
+
+  //     // Set the year to the new year
+  //     this.year = this.date.getFullYear();
+
+  //     // Set the month to the new month
+  //     this.month = this.date.getMonth();
+  //   }
+
+  //   else {
+  //     // Set the date to the current date
+  //     this.date = new Date();
+  //   }
+
+  //   // Call the manipulate function to
+  //   // update the calendar display
+  //   this.manipulate();
+  // }
 }
