@@ -361,6 +361,158 @@ form button:not(.disabled):hover {
   transform: translateY(-50%);
 }
 
+.calendar-container {
+  width: 70%;
+}
+
+.calendar-container header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+
+header .calendar-navigation {
+  display: flex;
+}
+
+header .calendar-navigation span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+  user-select: none;
+  font-size: 1.9rem;
+}
+
+.calendar-navigation span:last-child {
+  margin-right: -10px;
+}
+
+header .calendar-navigation span:hover {
+  background: #e2e1e4;
+}
+
+header .calendar-current-date {
+  font-weight: 500;
+  font-size: 1.45rem;
+}
+
+.calendar-body {
+  padding: 20px;
+}
+
+.calendar-body ul {
+  list-style: none;
+  flex-wrap: wrap;
+  display: flex;
+  text-align: center;
+}
+
+.calendar-body .calendar-dates {
+  margin-bottom: 20px;
+}
+
+.calendar-body li {
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+
+.calendar-body .calendar-weekdays li {
+  cursor: default;
+  font-weight: 500;
+}
+
+.calendar-dates {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--koraalrood100);
+}
+
+.calendar-dates li {
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.calendar-dates li.inactive {
+  color: var(--koraalrood50);
+}
+
+.calendar-dates li.active {
+  color: var(--koraalrood100);
+  font-weight: bold;
+}
+
+.calendar-dates li::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.calendar-dates li.active::before {
+  background: var(--citroengeel100);
+}
+
+.calendar-dates li:not(.active):hover::before {
+  background: #e2e1e4;
+}
+
+.arrow {
+  border: solid var(--citroengeel50);
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 3px;
+  width: 10px;
+  height: 10px;
+}
+
+.arrow-right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.arrow-left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+// .calendar-header {
+//   background-color: var(--petrol50);
+// }
+
+.calendar-navigation {
+  display: flex;
+  span {
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    user-select: none;
+    font-size: 1.9rem;
+  }
+  span:hover {
+    background: #f2f2f2;
+    .arrow {
+      border: solid var(--citroengeel100);
+      border-width: 0 6px 6px 0;
+    }
+  }
+}
+
 // Mobile view
 @media only screen and (max-width: 760px) {
   .top-navbar {
