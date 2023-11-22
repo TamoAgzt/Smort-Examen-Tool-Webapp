@@ -62,7 +62,10 @@ label {
 .mobile {
   display: none;
 }
-
+input {
+  border: none;
+  outline: none;
+}
 .top-navbar {
   // Make the navigation bar on the top of the page all the right properties
   height: 60px;

@@ -144,7 +144,7 @@ header .calendar-current-date {
 }
 
 .arrow {
-  border: solid var(--citroengeel50);
+  border: solid black;
   border-width: 0 6px 6px 0;
   display: inline-block;
   padding: 3px;
@@ -162,9 +162,9 @@ header .calendar-current-date {
   -webkit-transform: rotate(135deg);
 }
 
-.calendar-header {
-  background-color: var(--petrol50);
-}
+// .calendar-header {
+//   background-color: var(--petrol50);
+// }
 
 .calendar-navigation {
   display: flex;
@@ -182,7 +182,7 @@ header .calendar-current-date {
   span:hover {
     background: #f2f2f2;
     .arrow {
-      border: solid var(--citroengeel100);
+      border: solid var(--koraalrood100);
       border-width: 0 6px 6px 0;
     }
   }
