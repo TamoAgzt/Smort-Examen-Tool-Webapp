@@ -1,24 +1,21 @@
 <div class="overview-page center">
-  <h1>{{ timeofday }} {{ Accounts[1].Firstname }}</h1>
+  <h1>{{ timeofday }} {{ Accounts.Naam }} {{ Accounts.Achternaam }}</h1>
 
   <div
     class="coming-exams container-centered"
     *ngFor="let Exam of Exams | slice : 0 : 3"
   >
     <div class="coming-exam">
-      <div class="coming-image">
-        <img src="{{ Exam.Image }}" />
-      </div>
       <div class="exam-left exam-info">
-        <p class="exam-name">{{ Exam.ExamName }}</p>
-        <p>{{ Exam.Room }}</p>
-        <p>Vak: {{ Exam.Subject }}</p>
+        <p class="exam-name">{{ Exam.examenItem.naam_Examen }}</p>
+        <p>{{ Exam.lokaal }}</p>
+        <p>Vak: {{ Exam.examenItem.vak_Examen }}</p>
       </div>
       <div class="exam-right exam-info">
-        <p>Datum: {{ Exam.Date }}</p>
-        <p>Start tijd: {{ Exam.Time }}</p>
-        <p>Toezicht: {{ Exam.Supervisor }}</p>
-      </div>
+        <p>Datum: {{ Exam.agendaItem.tijd_Begin.split("T")[0] }}</p>
+        <p>Start tijd: {{ Exam.agendaItem.tijd_Begin.split("T")[1]  }}</p>
+        <p>Toezicht: {{ Exam.toezichterhouders[0].naam }} {{ Exam.toezichterhouders[0].achternaam }}</p>
+      </div> 
     </div>
   </div>
 </div>
