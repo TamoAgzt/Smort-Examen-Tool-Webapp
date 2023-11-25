@@ -29,12 +29,23 @@
       </ul>
       <ul class="calendar-dates">
         <li *ngFor="let date of dates" [class]="date.class">
-          {{ date.value }} <br/>
-          <div *ngFor="let exam of GetExameForDate( date.value, date.class )">
-            {{ exam.examenItem.naam_Examen }}
-          </div>
+          <div (click)="ShowExamsPopup(date)">{{ date.value }}</div>
         </li>
       </ul>
-    </div> 
+    </div>
+  </div>
+</div>
+
+<div class="popup" *ngIf="examsPopup">
+  <div class="backdrop" (click)="examsPopup = false"></div>
+  <div class="popup-content">
+    <div class="close-popup" (click)="examsPopup = false">Sluiten</div>
+    <div *ngFor="let exam of GetExameForDate(date.value, date.class)">
+      {{ exam.examenItem.naam_Examen }}
+    </div>
+    <div>
+      {{ examsForSelectedDate }}
+      {{ selectedDay }}
+    </div>
   </div>
 </div>
