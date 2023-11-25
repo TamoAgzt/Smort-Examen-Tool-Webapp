@@ -32,6 +32,9 @@
         <ul class="calendar-dates">
           <li *ngFor="let date of dates" [class]="date.class">
             {{ date.value }}
+            <div *ngFor="let exam of GetExameForDate( date.value, date.class )">
+              {{ exam.examenItem.naam_Examen }}
+            </div>
           </li>
         </ul>
       </div>

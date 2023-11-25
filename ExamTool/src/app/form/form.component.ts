@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvVars } from '../Env';
 import { Klas } from '../Objects/KlasObject';
 import { Statics } from '../Statics';
+import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 
 @Component({
   selector: 'app-form',
@@ -31,6 +32,8 @@ export class FormComponent implements OnInit {
 
   Exams = Exams;
   Image: string = '';
+  ResponseData: ExamSchedule[] | undefined;
+
   constructor(private http: HttpClient) {
     this.manipulate();
     const header = new HttpHeaders({
@@ -57,6 +60,25 @@ export class FormComponent implements OnInit {
         console.log(data);
         this.lokaal = data;
       });
+
+      this.http.get<ExamSchedule[]>(EnvVars.Api + "GetExamesForAMonth", {headers: header}).subscribe((data:ExamSchedule[]) => {
+        this.ResponseData = data;
+        console.log(data)
+      });
+  }
+
+  date: any = new Date();
+  year: number = this.date.getFullYear();
+  month: number = this.date.getMonth();
+
+  GetExameForDate(date:number, dateClass:string) {
+    let DateNew = new Date(this.year, this.month, date);
+    return this.ResponseData?.filter(examens => {
+      if (examens.agendaItem.tijd_Begin.split('T')[0] === DateNew.toISOString().split('T')[0] && dateClass != "inactive")
+        return examens;
+
+      return null;
+    });
   }
 
   ngOnInit(): void {}
@@ -147,9 +169,7 @@ export class FormComponent implements OnInit {
     this.AddClass = false;
   }
 
-  date: any = new Date();
-  year: number = this.date.getFullYear();
-  month: number = this.date.getMonth();
+
 
   months = [
     'Januari',

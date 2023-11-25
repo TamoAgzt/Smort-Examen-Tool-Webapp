@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Exam, Exams } from '../../assets/placeholder_exams';
+import { EnvVars } from '../Env';
+import { Statics } from '../Statics';
+import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 
 @Component({
   selector: 'app-calendar',
@@ -11,21 +14,39 @@ export class CalendarComponent {
   constructor(private http: HttpClient) {
     this.GetData();
     this.manipulate();
+
+
   }
 
   Exams: Exam[] = Exams;
-  ResponseData: any = null;
+  ResponseData: ExamSchedule[] | undefined;
+
+
 
   GetData() {
-    this.http.get('http://httpstat.us/418').subscribe((data) => {
-      console.table(data);
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    this.http.get<ExamSchedule[]>(EnvVars.Api + "GetExamesForAMonth", {headers: header}).subscribe((data:ExamSchedule[]) => {
       this.ResponseData = data;
+      console.log(data)
     });
   }
 
   date: any = new Date();
   year: number = this.date.getFullYear();
   month: number = this.date.getMonth();
+
+  GetExameForDate(date:number, dateClass:string) {
+    let DateNew = new Date(this.year, this.month, date);
+    return this.ResponseData?.filter(examens => {
+      if (examens.agendaItem.tijd_Begin.split('T')[0] === DateNew.toISOString().split('T')[0] && dateClass != "inactive")
+        return examens;
+
+      return null;
+    });
+  }
 
   months = [
     'Januari',
