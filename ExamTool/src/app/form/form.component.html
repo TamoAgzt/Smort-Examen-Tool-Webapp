@@ -76,7 +76,7 @@
         <input
           id="ExamName"
           type="text"
-          [(ngModel)]="Exame.naam_Examen"
+          [(ngModel)]="ExamenInplannen.naam_Examen"
           name="ExamName"
           title="Examen Naam"
           placeholder="Examen Naam"
@@ -85,7 +85,7 @@
         <input
           id="Subject"
           type="text"
-          [(ngModel)]="Exame.vak_Examen"
+          [(ngModel)]="ExamenInplannen.vak_Examen"
           name="Subject"
           title="Vak"
           placeholder="Vak"
@@ -93,7 +93,7 @@
 
         <br />
 
-        <select [(ngModel)]="agendaItem.klas_Id" name="agendaItem.klas_Id">
+        <select [(ngModel)]="ExamenInplannen.klas_Id" name="ExamenInplannen.klas_Id">
           <option *ngFor="let Klas of klasses" [value]="Klas.Id">
             {{ Klas.Naam }}
           </option>
@@ -120,7 +120,7 @@
 
         <br />
 
-        <select [(ngModel)]="agendaItem.lokaal_Id" name="agendaItem.lokaal_Id">
+        <select [(ngModel)]="ExamenInplannen.lokaal_Id" name="ExamenInplannen.lokaal_Id">
           <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
             {{ lokaal.Lokaal }}
           </option>
@@ -148,8 +148,8 @@
         <br />
 
         <select
-          [(ngModel)]="Exame.toezichthouder_Id"
-          name="Exame.toezichthouder_Id"
+          [(ngModel)]="ExamenInplannen.toezichthouder_Id"
+          name="ExamenInplannen.toezichthouder_Id"
         >
           <option
             *ngFor="let toezicht of Toezichthouders"
@@ -164,7 +164,7 @@
         <input
           id="beginTijd"
           type="datetime-local"
-          [(ngModel)]="agendaItem.beginTijd"
+          [(ngModel)]="ExamenInplannen.beginTijd"
           name="Date"
           title="Datum"
           placeholder="Datum"
@@ -173,7 +173,7 @@
         <input
           id="eindTijd"
           type="datetime-local"
-          [(ngModel)]="agendaItem.eindTijd"
+          [(ngModel)]="ExamenInplannen.eindTijd"
           name="datetime"
           title="Datum"
           placeholder="Datum"

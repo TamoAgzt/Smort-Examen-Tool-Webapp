@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Exam, Exams } from '../../assets/placeholder_exams';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvVars } from '../Env';
-import { Klas } from '../Objects/KlasObject';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 
@@ -12,19 +11,17 @@ import { ExamSchedule } from '../Objects/ObjectExamenWeek';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  agendaItem = {
-    klas_Id: 0,
-    exameId: 0,
-    lokaal_Id: 0,
-    beginTijd: '',
-    eindTijd: '',
-  };
 
-  Exame = {
+  ExamenInplannen = {
     toezichthouder_Id: 0,
-    naam_Examen: '',
-    vak_Examen: '',
-  };
+    naam_Examen: "",
+    vak_Examen: "",
+    klas_Id: 0,
+    examen_Id: 0,
+    lokaal_Id: 0,
+    beginTijd: Date.now,
+    eindTijd: Date.now
+  }
 
   Toezichthouders: any;
   klasses: any;
@@ -36,7 +33,7 @@ export class FormComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.manipulate();
-    const header = new HttpHeaders({
+    let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
 
@@ -84,9 +81,14 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {}
 
   save() {
-    console.log(this.Exame);
-    console.log(this.agendaItem);
-    console.log('Save');
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    console.log(this.ExamenInplannen)
+
+    this.http.post(EnvVars.Api + "ExamenInPlannen", this.ExamenInplannen,{headers: header} ).subscribe();
+
   }
 
   AddPopup: boolean = false;
@@ -130,8 +132,8 @@ export class FormComponent implements OnInit {
   }
 
   RemoveClass() {
-    console.log(this.agendaItem.klas_Id);
-    const header = new HttpHeaders({
+    console.log(this.ExamenInplannen.klas_Id);
+    let header = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${Statics.Token}`,
     });
@@ -139,7 +141,7 @@ export class FormComponent implements OnInit {
     this.http
       .delete(EnvVars.Api + 'DeleteKlas', {
         headers: header,
-        body: this.agendaItem.klas_Id,
+        body: this.ExamenInplannen.klas_Id,
       })
       .subscribe();
   }
