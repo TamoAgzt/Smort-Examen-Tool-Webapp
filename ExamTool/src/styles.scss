@@ -62,7 +62,10 @@ label {
 .mobile {
   display: none;
 }
-
+input {
+  border: none;
+  outline: none;
+}
 .top-navbar {
   // Make the navigation bar on the top of the page all the right properties
   height: 60px;
@@ -291,7 +294,6 @@ form button:not(.disabled):hover {
 }
 
 .dayNames {
-  // margin-right: 60px;
   span {
     width: auto;
     margin: 0 10px;
@@ -307,55 +309,10 @@ form button:not(.disabled):hover {
   width: 100%;
   .container-left {
     width: 50%;
-    // background-color: aqua;
   }
   .container-right {
     width: 50%;
-    // background-color: pink;
   }
-}
-.calendar {
-  margin-top: 2.5%;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.week {
-  display: flex;
-  flex-direction: row;
-}
-
-.dag {
-  border-radius: 10px;
-  border: 2px var(--petrol100) solid;
-  width: 12.5vw;
-  height: 12.5vh;
-  position: relative;
-  margin: 5px 10px;
-  background-color: var(--koraalrood50);
-}
-
-.dag .daynum {
-  margin: 0;
-  position: absolute;
-  top: -7.5vh;
-  width: 100%;
-  padding: 1% 0px;
-  -ms-transform: translateY(100%);
-  transform: translateY(100%);
-}
-
-.dag .exambanner:not(:empty) {
-  background-color: var(--koraalrood100);
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  padding: 5px 0 10px 0;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 // Mobile view
@@ -375,7 +332,6 @@ form button:not(.disabled):hover {
 
   .desktop {
     display: none;
-
   }
   .mobile {
     display: flex;

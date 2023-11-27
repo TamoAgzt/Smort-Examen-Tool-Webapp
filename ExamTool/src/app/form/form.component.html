@@ -1,27 +1,42 @@
 <!-- <div class="exam-form-page"> -->
 <div class="container-left">
-  <div class="calendar">
-    <div>
-      <div class="dayNames">
-        <span>Maandag</span>
-        <span>Dinsdag</span>
-        <span>Woensdag</span>
-        <span>Donderdag</span>
-        <span>Vrijdag</span>
-      </div>
-      <div
-        class="week week{{ week + 1 }}"
-        *ngFor="let index of [].constructor(4); let week = index"
-      >
-        <p>Week {{ week + 1 }}</p>
-        <div
-          class="dag dag{{ day + 1 }}"
-          *ngFor="let index of [].constructor(5); let day = index"
-        >
-          <p class="exambanner">
-            {{ Exams[day].Time }} - {{ Exams[day].ExamName }}
-          </p>
+  <div class="calender center">
+    <div class="calendar-container">
+      <header class="calendar-header">
+        <div class="calendar-navigation">
+          <span id="calendar-prev" (click)="prevMonth()">
+            <i class="arrow arrow-left"></i>
+          </span>
         </div>
+        <p class="calendar-current-date">
+          {{ this.year }}<br />
+          {{ this.months[this.month] }}
+        </p>
+        <div class="calendar-navigation">
+          <span id="calendar-next" (click)="nextMonth()">
+            <i class="arrow arrow-right"></i>
+          </span>
+        </div>
+      </header>
+
+      <div class="calendar-body">
+        <ul class="calendar-weekdays">
+          <li>Zo</li>
+          <li>Ma</li>
+          <li>Di</li>
+          <li>Wo</li>
+          <li>Do</li>
+          <li>Vr</li>
+          <li>Za</li>
+        </ul>
+        <ul class="calendar-dates">
+          <li *ngFor="let date of dates" [class]="date.class">
+            {{ date.value }}
+            <div *ngFor="let exam of GetExameForDate( date.value, date.class )">
+              {{ exam.examenItem.naam_Examen }}
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -61,7 +76,7 @@
         <input
           id="ExamName"
           type="text"
-          [(ngModel)]="Exame.naam_Examen"
+          [(ngModel)]="ExamenInplannen.naam_Examen"
           name="ExamName"
           title="Examen Naam"
           placeholder="Examen Naam"
@@ -70,7 +85,7 @@
         <input
           id="Subject"
           type="text"
-          [(ngModel)]="Exame.vak_Examen"
+          [(ngModel)]="ExamenInplannen.vak_Examen"
           name="Subject"
           title="Vak"
           placeholder="Vak"
@@ -78,7 +93,7 @@
 
         <br />
 
-        <select [(ngModel)]="agendaItem.klas_Id" name="agendaItem.klas_Id">
+        <select [(ngModel)]="ExamenInplannen.klas_Id" name="ExamenInplannen.klas_Id">
           <option *ngFor="let Klas of klasses" [value]="Klas.Id">
             {{ Klas.Naam }}
           </option>
@@ -93,7 +108,11 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a class="form-minus form-edit" aria-label="Remove class room" (click)="RemoveClass()">
+        <a
+          class="form-minus form-edit"
+          aria-label="Remove class room"
+          (click)="RemoveClass()"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20 14H4V10H20" />
           </svg>
@@ -101,7 +120,7 @@
 
         <br />
 
-        <select [(ngModel)]="agendaItem.lokaal_Id" name="agendaItem.lokaal_Id">
+        <select [(ngModel)]="ExamenInplannen.lokaal_Id" name="ExamenInplannen.lokaal_Id">
           <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
             {{ lokaal.Lokaal }}
           </option>
@@ -116,11 +135,11 @@
             <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
           </svg>
         </a>
-        <a 
-        class="form-minus form-edit"
-         aria-label="Remove class room" 
-         (click)="RemoveClass()"
-         >
+        <a
+          class="form-minus form-edit"
+          aria-label="Remove class room"
+          (click)="RemoveClass()"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20 14H4V10H20" />
           </svg>
@@ -129,8 +148,8 @@
         <br />
 
         <select
-          [(ngModel)]="Exame.toezichthouder_Id"
-          name="Exame.toezichthouder_Id"
+          [(ngModel)]="ExamenInplannen.toezichthouder_Id"
+          name="ExamenInplannen.toezichthouder_Id"
         >
           <option
             *ngFor="let toezicht of Toezichthouders"
@@ -145,7 +164,7 @@
         <input
           id="beginTijd"
           type="datetime-local"
-          [(ngModel)]="agendaItem.beginTijd"
+          [(ngModel)]="ExamenInplannen.beginTijd"
           name="Date"
           title="Datum"
           placeholder="Datum"
@@ -154,7 +173,7 @@
         <input
           id="eindTijd"
           type="datetime-local"
-          [(ngModel)]="agendaItem.eindTijd"
+          [(ngModel)]="ExamenInplannen.eindTijd"
           name="datetime"
           title="Datum"
           placeholder="Datum"

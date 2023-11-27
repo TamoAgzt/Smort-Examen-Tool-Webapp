@@ -1,15 +1,44 @@
-import { Component } from '@angular/core';
-import { Exam, Exams } from '../../assets/placeholder_exams';
-import { Account, Accounts } from '../../assets/placeholder_accounts';
+import { Component, OnInit } from '@angular/core';
+import { Exams } from '../../assets/placeholder_exams';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Statics } from '../Statics';
+import { EnvVars } from '../Env';
+import { ExamSchedule } from '../Objects/ObjectExamenWeek';
+
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
 })
-export class OverviewComponent {
-  Exams = Exams;
-  Accounts = Accounts;
+export class OverviewComponent implements OnInit{
 
-  timeofday: string = 'Goedemorgen';
+  Accounts: any;
+  Exams: ExamSchedule[] | undefined;
+
+  timeofday: string = "Goeie Morgen";
+
+  constructor(public http:HttpClient) 
+  {
+    
+    const header = new HttpHeaders({
+      Authorization: `Bearer ${Statics.Token}`,
+    });
+
+    this.http.get(EnvVars.Api + "GetUserData", { headers: header }).subscribe((data:any) => {
+      this.Accounts = data[0];
+
+  });
+
+  this.http.get<ExamSchedule[]>(EnvVars.Api + "GetExamesForAweek", { headers: header }).subscribe((data:any) => {
+    this.Exams = data;
+    console.log(data);
+});
+  }
+
+  ngOnInit(): void {
+
+
+
+  }
 }

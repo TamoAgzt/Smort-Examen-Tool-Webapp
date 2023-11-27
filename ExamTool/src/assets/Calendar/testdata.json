@@ -1,0 +1,65 @@
+[
+  {
+    "agendaItem": {
+      "klas_Id": 1,
+      "examen_Id": 2,
+      "lokaal_Id": 1,
+      "tijd_Begin": "2023-11-29T09:49:10",
+      "tijd_Einden": "2023-11-29T09:49:10"
+    },
+    "examenItem": {
+      "toezichthouders_Id": 1,
+      "naam_Examen": "Engels",
+      "vak_Examen": "Duits"
+    },
+    "toezichterhouders": [
+      {
+        "naam": "Root",
+        "achternaam": "Root"
+      }
+    ],
+    "lokaal": "B2.10"
+  },
+  {
+    "agendaItem": {
+      "klas_Id": 1,
+      "examen_Id": 3,
+      "lokaal_Id": 1,
+      "tijd_Begin": "2023-11-29T09:49:10",
+      "tijd_Einden": "2023-11-29T09:49:10"
+    },
+    "examenItem": {
+      "toezichthouders_Id": 2,
+      "naam_Examen": "Engels",
+      "vak_Examen": "Duits"
+    },
+    "toezichterhouders": [
+      {
+        "naam": "Bram",
+        "achternaam": "Hendriks"
+      }
+    ],
+    "lokaal": "B2.10"
+  },
+  {
+    "agendaItem": {
+      "klas_Id": 2,
+      "examen_Id": 4,
+      "lokaal_Id": 1,
+      "tijd_Begin": "2023-11-29T09:49:10",
+      "tijd_Einden": "2023-11-29T09:49:10"
+    },
+    "examenItem": {
+      "toezichthouders_Id": 3,
+      "naam_Examen": "NAZI SCHRIJVEN VOOR BEGINNERS BITCH",
+      "vak_Examen": "Duits"
+    },
+    "toezichterhouders": [
+      {
+        "naam": "Jan",
+        "achternaam": "Hendrik"
+      }
+    ],
+    "lokaal": "B2.10"
+  }
+]
