@@ -2,16 +2,16 @@
   <div class="calendar-container">
     <header class="calendar-header">
       <div class="calendar-navigation">
-        <span id="calendar-prev" (click)="prevMonth()">
+        <span id="calendar-prev" (click)="calendarService.prevMonth()">
           <i class="arrow arrow-left"></i>
         </span>
       </div>
       <p class="calendar-current-date">
-        {{ this.year }}<br />
-        {{ this.months[this.month] }}
+        {{ calendarService.year }}<br />
+        {{ calendarService.months[calendarService.month] }}
       </p>
       <div class="calendar-navigation">
-        <span id="calendar-next" (click)="nextMonth()">
+        <span id="calendar-next" (click)="calendarService.nextMonth()">
           <i class="arrow arrow-right"></i>
         </span>
       </div>
@@ -28,24 +28,35 @@
         <li>Za</li>
       </ul>
       <ul class="calendar-dates">
-        <li *ngFor="let date of dates" [class]="date.class">
-          <div (click)="ShowExamsPopup(date)">{{ date.value }}</div>
+        <li *ngFor="let date of calendarService.dates" [class]="date.class">
+          <div (click)="calendarService.ShowExamsPopup(date)">
+            {{ date.value }}
+          </div>
         </li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="popup" *ngIf="examsPopup">
-  <div class="backdrop" (click)="examsPopup = false"></div>
+<div class="popup" *ngIf="calendarService.examsPopup">
+  <div class="backdrop" (click)="calendarService.examsPopup = false"></div>
   <div class="popup-content">
-    <div class="close-popup" (click)="examsPopup = false">Sluiten</div>
-    <div *ngFor="let exam of GetExameForDate(date.value, date.class)">
+    <div class="close-popup" (click)="calendarService.examsPopup = false">
+      Sluiten
+    </div>
+    <div
+      *ngFor="
+        let exam of calendarService.GetExameForDate(
+          calendarService.date.value,
+          calendarService.date.class
+        )
+      "
+    >
       {{ exam.examenItem.naam_Examen }}
     </div>
     <div>
-      {{ examsForSelectedDate }}
-      {{ selectedDay }}
+      {{ calendarService.examsForSelectedDate }}
+      {{ calendarService.selectedDay }}
     </div>
   </div>
 </div>
