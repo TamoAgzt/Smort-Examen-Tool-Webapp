@@ -8,20 +8,19 @@ import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  styleUrls: ['./form.component.scss', '../calendar/calendar.component.scss'],
 })
 export class FormComponent implements OnInit {
-
   ExamenInplannen = {
     toezichthouder_Id: 0,
-    naam_Examen: "",
-    vak_Examen: "",
+    naam_Examen: '',
+    vak_Examen: '',
     klas_Id: 0,
     examen_Id: 0,
     lokaal_Id: 0,
     beginTijd: Date.now,
-    eindTijd: Date.now
-  }
+    eindTijd: Date.now,
+  };
 
   Toezichthouders: any;
   klasses: any;
@@ -58,9 +57,13 @@ export class FormComponent implements OnInit {
         this.lokaal = data;
       });
 
-      this.http.get<ExamSchedule[]>(EnvVars.Api + "GetExamesForAMonth", {headers: header}).subscribe((data:ExamSchedule[]) => {
+    this.http
+      .get<ExamSchedule[]>(EnvVars.Api + 'GetExamesForAMonth', {
+        headers: header,
+      })
+      .subscribe((data: ExamSchedule[]) => {
         this.ResponseData = data;
-        console.log(data)
+        console.log(data);
       });
   }
 
@@ -68,10 +71,14 @@ export class FormComponent implements OnInit {
   year: number = this.date.getFullYear();
   month: number = this.date.getMonth();
 
-  GetExameForDate(date:number, dateClass:string) {
+  GetExameForDate(date: number, dateClass: string) {
     let DateNew = new Date(this.year, this.month, date);
-    return this.ResponseData?.filter(examens => {
-      if (examens.agendaItem.tijd_Begin.split('T')[0] === DateNew.toISOString().split('T')[0] && dateClass != "inactive")
+    return this.ResponseData?.filter((examens) => {
+      if (
+        examens.agendaItem.tijd_Begin.split('T')[0] ===
+          DateNew.toISOString().split('T')[0] &&
+        dateClass != 'inactive'
+      )
         return examens;
 
       return null;
@@ -85,10 +92,13 @@ export class FormComponent implements OnInit {
       Authorization: `Bearer ${Statics.Token}`,
     });
 
-    console.log(this.ExamenInplannen)
+    console.log(this.ExamenInplannen);
 
-    this.http.post(EnvVars.Api + "ExamenInPlannen", this.ExamenInplannen,{headers: header} ).subscribe();
-
+    this.http
+      .post(EnvVars.Api + 'ExamenInPlannen', this.ExamenInplannen, {
+        headers: header,
+      })
+      .subscribe();
   }
 
   AddPopup: boolean = false;
@@ -170,8 +180,6 @@ export class FormComponent implements OnInit {
     this.AddClassRoom = false;
     this.AddClass = false;
   }
-
-
 
   months = [
     'Januari',
