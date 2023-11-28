@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvVars } from '../Env';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form',
@@ -31,7 +32,8 @@ export class FormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    public calendarService: CalendarService
+    public calendarService: CalendarService,
+    private snackBar: MatSnackBarModule
   ) {
     let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
@@ -84,6 +86,7 @@ export class FormComponent implements OnInit {
         headers: header,
       })
       .subscribe();
+    this.notifyUser('Successvol opgeslagen!');
   }
 
   AddPopup: boolean = false;
@@ -124,6 +127,7 @@ export class FormComponent implements OnInit {
 
     this.AddPopup = false;
     this.AddClass = false;
+    this.notifyUser('Successvol opgeslagen!');
   }
 
   RemoveClass() {
@@ -139,6 +143,7 @@ export class FormComponent implements OnInit {
         body: this.ExamenInplannen.klas_Id,
       })
       .subscribe();
+    this.notifyUser('Successvol verwijderd!');
   }
 
   SaveClassRoom() {
@@ -158,11 +163,18 @@ export class FormComponent implements OnInit {
 
     this.AddPopup = false;
     this.AddClassRoom = false;
+    this.notifyUser('Successvol opgeslagen!');
   }
 
   CancelAdding() {
     this.AddPopup = false;
     this.AddClassRoom = false;
     this.AddClass = false;
+  }
+
+  notifyUser(message: string) {
+    this.snackBar.open(message, 'Ok', {
+      duration: 3000,
+    });
   }
 }

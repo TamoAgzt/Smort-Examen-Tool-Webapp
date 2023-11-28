@@ -12,6 +12,9 @@ export class CalendarService {
     this.GetData();
   }
 
+  ResponseData: ExamSchedule[] | undefined;
+  examsForSelectedDate: ExamSchedule[] | undefined;
+
   date: any = new Date();
   year: number = this.date.getFullYear();
   month: number = this.date.getMonth();
@@ -33,6 +36,9 @@ export class CalendarService {
 
   datum: any = '';
   dates: { value: number; class: string }[] = [];
+
+  examsPopup: boolean = false;
+  selectedDay: any;
 
   // Function to generate the calendar
   manipulate = () => {
@@ -115,8 +121,6 @@ export class CalendarService {
     this.manipulate();
   }
 
-  ResponseData: ExamSchedule[] | undefined;
-
   GetData() {
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
@@ -131,6 +135,7 @@ export class CalendarService {
         console.log(data);
       });
   }
+
   GetExameForDate(date: number, dateClass: string) {
     let DateNew = new Date(this.year, this.month, date);
     return this.ResponseData?.filter((examens) => {
@@ -145,14 +150,7 @@ export class CalendarService {
     });
   }
 
-  examsPopup: boolean = false;
-  examsForSelectedDate: ExamSchedule[] | undefined;
-  selectedDay: any;
-
   ShowExamsPopup(selectedDate: { value: number; class: string }) {
-    // alert(this.date);
-    this.examsPopup = !this.examsPopup;
-
     // Check if selected date is active
     if (selectedDate.class !== 'inactive') {
       // selectedDate.value to get date

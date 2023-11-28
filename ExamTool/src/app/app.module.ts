@@ -14,8 +14,6 @@ import { FormComponent } from './form/form.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CommonModule } from '@angular/common';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
