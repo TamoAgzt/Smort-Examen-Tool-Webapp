@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvVars } from '../Env';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -31,8 +31,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    public calendarService: CalendarService,
-    private snackBar: MatSnackBar
+    public calendarService: CalendarService
   ) {
     let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
@@ -85,7 +84,7 @@ export class FormComponent implements OnInit {
         headers: header,
       })
       .subscribe();
-    // this.notifyUser('Successvol opgeslagen!');
+    this.notifyUser('Successvol opgeslagen!', 'success');
   }
 
   AddPopup: boolean = false;
@@ -126,7 +125,7 @@ export class FormComponent implements OnInit {
 
     this.AddPopup = false;
     this.AddClass = false;
-    // this.notifyUser('Successvol opgeslagen!');
+    this.notifyUser('Successvol opgeslagen!', 'success');
   }
 
   RemoveClass() {
@@ -142,7 +141,7 @@ export class FormComponent implements OnInit {
         body: this.ExamenInplannen.klas_Id,
       })
       .subscribe();
-    // this.notifyUser('Successvol verwijderd!');
+    this.notifyUser('Successvol verwijderd!', 'success');
   }
 
   SaveClassRoom() {
@@ -162,7 +161,7 @@ export class FormComponent implements OnInit {
 
     this.AddPopup = false;
     this.AddClassRoom = false;
-    // this.notifyUser('Successvol opgeslagen!');
+    this.notifyUser('Successvol opgeslagen!', 'success');
   }
 
   CancelAdding() {
@@ -171,9 +170,25 @@ export class FormComponent implements OnInit {
     this.AddClass = false;
   }
 
-  // notifyUser(message: string) {
-  //   this.snackBar.open(message, 'Ok', {
-  //     duration: 3000,
-  //   });
-  // }
+  notifPopUp: boolean = false;
+  notiffication: string = 'notif';
+  statusSuccess: boolean = false;
+  statusFail: boolean = false;
+
+  notifyUser(message: string, status: string) {
+    this.notifPopUp = true;
+    this.notiffication = message;
+
+    if (status == 'success') {
+      this.statusSuccess = true;
+    }
+    if (status == 'failure') {
+      this.statusFail = true;
+    }
+    setInterval(() => {
+      this.notifPopUp = false;
+      this.statusSuccess = false;
+      this.statusFail = false;
+    }, 3000);
+  }
 }
