@@ -5,7 +5,6 @@ import { EnvVars } from '../Env';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
