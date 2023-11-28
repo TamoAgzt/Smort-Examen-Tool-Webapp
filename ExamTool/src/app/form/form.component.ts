@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvVars } from '../Env';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -31,8 +32,13 @@ export class FormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    public calendarService: CalendarService
-  ) {
+    public calendarService: CalendarService,
+    public router:Router) 
+  {
+    if(Statics.Token == ""){
+      router.navigate(["/login"]);
+    }
+    
     let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
