@@ -4,16 +4,16 @@
     <div class="calendar-container">
       <header class="calendar-header">
         <div class="calendar-navigation">
-          <span id="calendar-prev" (click)="prevMonth()">
+          <span id="calendar-prev" (click)="calendarService.prevMonth()">
             <i class="arrow arrow-left"></i>
           </span>
         </div>
         <p class="calendar-current-date">
-          {{ this.year }}<br />
-          {{ this.months[this.month] }}
+          {{ calendarService.year }}<br />
+          {{ calendarService.months[calendarService.month] }}
         </p>
         <div class="calendar-navigation">
-          <span id="calendar-next" (click)="nextMonth()">
+          <span id="calendar-next" (click)="calendarService.nextMonth()">
             <i class="arrow arrow-right"></i>
           </span>
         </div>
@@ -30,13 +30,35 @@
           <li>Za</li>
         </ul>
         <ul class="calendar-dates">
-          <li *ngFor="let date of dates" [class]="date.class">
-            {{ date.value }}
-            <div *ngFor="let exam of GetExameForDate( date.value, date.class )">
-              {{ exam.examenItem.naam_Examen }}
+          <li *ngFor="let date of calendarService.dates" [class]="date.class">
+            <div (click)="calendarService.ShowExamsPopup(date)">
+              {{ date.value }}
             </div>
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" *ngIf="calendarService.examsPopup">
+    <div class="backdrop" (click)="calendarService.examsPopup = false"></div>
+    <div class="popup-content">
+      <div class="close-popup" (click)="calendarService.examsPopup = false">
+        Sluiten
+      </div>
+      <div
+        *ngFor="
+          let exam of calendarService.GetExameForDate(
+            calendarService.date.value,
+            calendarService.date.class
+          )
+        "
+      >
+        {{ exam.examenItem.naam_Examen }}
+      </div>
+      <div>
+        {{ calendarService.examsForSelectedDate }}
+        {{ calendarService.selectedDay }}
       </div>
     </div>
   </div>
@@ -93,7 +115,10 @@
 
         <br />
 
-        <select [(ngModel)]="ExamenInplannen.klas_Id" name="ExamenInplannen.klas_Id">
+        <select
+          [(ngModel)]="ExamenInplannen.klas_Id"
+          name="ExamenInplannen.klas_Id"
+        >
           <option *ngFor="let Klas of klasses" [value]="Klas.Id">
             {{ Klas.Naam }}
           </option>
@@ -120,7 +145,10 @@
 
         <br />
 
-        <select [(ngModel)]="ExamenInplannen.lokaal_Id" name="ExamenInplannen.lokaal_Id">
+        <select
+          [(ngModel)]="ExamenInplannen.lokaal_Id"
+          name="ExamenInplannen.lokaal_Id"
+        >
           <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
             {{ lokaal.Lokaal }}
           </option>
