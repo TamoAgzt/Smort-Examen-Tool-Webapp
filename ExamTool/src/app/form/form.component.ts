@@ -85,7 +85,7 @@ export class FormComponent implements OnInit {
         headers: header,
       })
       .subscribe();
-    this.notifyUser('Successvol opgeslagen!');
+    // this.notifyUser('Successvol opgeslagen!');
   }
 
   AddPopup: boolean = false;
