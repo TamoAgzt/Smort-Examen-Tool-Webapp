@@ -68,6 +68,15 @@ export class CalendarService {
         this.year === new Date().getFullYear()
           ? 'active'
           : '';
+
+      let Exames:ExamSchedule[] | undefined  = this.GetExameForDate(i);
+
+
+      if(typeof Exames === 'object')
+      if(Exames.length > 0){
+        isToday += " Exames";
+      }
+          
       this.dates.push({ value: i, class: isToday });
     }
 
@@ -127,7 +136,7 @@ export class CalendarService {
     });
 
     this.http
-      .get<ExamSchedule[]>(EnvVars.Api + 'GetExamesForAMonth', {
+      .get<ExamSchedule[]>(EnvVars.Api + `GetExamesForAMonth?month=${this.month + 1}&year=${this.year}`, {
         headers: header,
       })
       .subscribe((data: ExamSchedule[]) => {
@@ -136,13 +145,12 @@ export class CalendarService {
       });
   }
 
-  GetExameForDate(date: number, dateClass: string) {
-    let DateNew = new Date(this.year, this.month, date);
+  GetExameForDate(date: number) {
+    let DateNew = new Date(this.year, this.month, date + 1);
     return this.ResponseData?.filter((examens) => {
       if (
         examens.agendaItem.tijd_Begin.split('T')[0] ===
-          DateNew.toISOString().split('T')[0] &&
-        dateClass != 'inactive'
+          DateNew.toISOString().split('T')[0]
       )
         return examens;
 
@@ -150,18 +158,15 @@ export class CalendarService {
     });
   }
 
-  ShowExamsPopup(selectedDate: { value: number; class: string }) {
+  ShowExamsPopup(selectedDate: { value: number }) {
     // Check if selected date is active
-    if (selectedDate.class !== 'inactive') {
       // selectedDate.value to get date
       this.selectedDay = selectedDate.value;
 
       // GetExameForDate to filter exams for selected date
       const examsForSelectedDate = this.GetExameForDate(
         this.selectedDay,
-        selectedDate.class
       );
       this.examsPopup = true;
-    }
   }
 }

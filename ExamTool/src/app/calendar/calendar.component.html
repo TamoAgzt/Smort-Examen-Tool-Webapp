@@ -30,7 +30,7 @@
       <ul class="calendar-dates">
         <li *ngFor="let date of calendarService.dates" [class]="date.class">
           <div (click)="calendarService.ShowExamsPopup(date)">
-            {{ date.value }}
+           <div> {{ date.value }} </div>
           </div>
         </li>
       </ul>
@@ -47,8 +47,7 @@
     <div
       *ngFor="
         let exam of calendarService.GetExameForDate(
-          calendarService.date.value,
-          calendarService.date.class
+          calendarService.date.value
         )
       "
     >
