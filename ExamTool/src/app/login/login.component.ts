@@ -23,7 +23,6 @@ export class LoginComponent {
       .post<Login>(EnvVars.Api + 'Login', this.data)
       .subscribe((data: Login) => {
         if (data != null) {
-          console.log(data);
           Statics.Token = data.token;
           Statics.Rol = data.rol;
           window.localStorage.setItem('Vista.Examen.Token.Planner', data.token);

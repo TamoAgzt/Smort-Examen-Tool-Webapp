@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../Objects/calendar.service';
 import { Router } from '@angular/router';
 import { Statics } from '../Statics';
+import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 
 @Component({
   selector: 'app-calendar',
@@ -9,16 +10,16 @@ import { Statics } from '../Statics';
   styleUrls: ['./calendar.component.scss', '../Objects/calendar.scss'],
 })
 export class CalendarComponent implements OnInit {
+SelectedExamesForTheDay: any;
   constructor(public calendarService: CalendarService, public router:Router) 
   {
     if(Statics.Token == ""){
       router.navigate(["/login"]);
     }
-    this.calendarService.GetData();
   }
-  
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const data: ExamSchedule[] = await this.calendarService.GetData();
     this.calendarService.manipulate();
   }
 }

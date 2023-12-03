@@ -46,16 +46,17 @@
     </div>
     <div
       *ngFor="
-        let exam of calendarService.GetExameForDate(
-          calendarService.date.value
-        )
+        let exam of calendarService.SelectedExamesForTheDay
       "
     >
-      {{ exam.examenItem.naam_Examen }}
-    </div>
-    <div>
-      {{ calendarService.examsForSelectedDate }}
-      {{ calendarService.selectedDay }}
+
+     Naam Examen: {{ exam.examenItem.naam_Examen }} <br/>
+     Vak: {{ exam.examenItem.vak_Examen }} <br/>
+     Toezicht: {{ exam.toezichterhouders[0].naam[0]}}.{{ exam.toezichterhouders[0].achternaam }} <br/>
+     Datum: {{ exam.agendaItem.tijd_Begin.split("T")[0] }} <br/>
+     Tijd: {{ exam.agendaItem.tijd_Begin.split("T")[1] }} <br/>
+     Lokaal: {{exam.lokaal}}
+
     </div>
   </div>
 </div>

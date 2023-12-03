@@ -39,6 +39,7 @@ export class CalendarService {
 
   examsPopup: boolean = false;
   selectedDay: any;
+  SelectedExamesForTheDay: ExamSchedule[] | undefined;
 
   // Function to generate the calendar
   manipulate = () => {
@@ -73,9 +74,9 @@ export class CalendarService {
 
 
       if(typeof Exames === 'object')
-      if(Exames.length > 0){
-        isToday += " Exames";
-      }
+        if(Exames.length > 0){
+          isToday += " Exames";
+        }
           
       this.dates.push({ value: i, class: isToday });
     }
@@ -86,7 +87,7 @@ export class CalendarService {
     console.log(this.dates);
   };
 
-  prevMonth() {
+  async prevMonth() {
     this.month -= 1;
     if (this.month < 0 || this.month > 11) {
       // Set the date to the first day of the
@@ -105,11 +106,14 @@ export class CalendarService {
 
     // Call the manipulate function to
     // update the calendar display
-    this.manipulate();
+    const data: ExamSchedule[] = await this.GetData();
+     this.manipulate();
   }
 
-  nextMonth() {
+  async nextMonth() {
+    
     this.month += 1;
+    
     if (this.month < 0 || this.month > 11) {
       // Set the date to the first day of the
       // month with the new year
@@ -127,34 +131,45 @@ export class CalendarService {
 
     // Call the manipulate function to
     // update the calendar display
+
+    const data: ExamSchedule[] = await this.GetData();
     this.manipulate();
+
   }
 
-  GetData() {
+  GetData(): Promise<ExamSchedule[]> {
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
-
-    this.http
-      .get<ExamSchedule[]>(EnvVars.Api + `GetExamesForAMonth?month=${this.month + 1}&year=${this.year}`, {
-        headers: header,
-      })
-      .subscribe((data: ExamSchedule[]) => {
-        this.ResponseData = data;
-        console.log(data);
-      });
+  
+    return new Promise<ExamSchedule[]>((resolve, reject) => {
+      this.http
+        .get<ExamSchedule[]>(EnvVars.Api + `GetExamesForAMonth?month=${this.month + 1}&year=${this.year}`, {
+          headers: header,
+        })
+        .subscribe(
+          (data: ExamSchedule[]) => {
+            this.ResponseData = data;
+            console.log(data);
+            console.log("GetData Done");
+            resolve(data);  // Resolve the promise with the data
+          },
+          (error) => {
+            console.error("Error in API call:", error);
+            reject(error);  // Reject the promise with the error
+          }
+        );
+    });
   }
+  
 
   GetExameForDate(date: number) {
     let DateNew = new Date(this.year, this.month, date + 1);
     return this.ResponseData?.filter((examens) => {
-      if (
+      return (
         examens.agendaItem.tijd_Begin.split('T')[0] ===
-          DateNew.toISOString().split('T')[0]
-      )
-        return examens;
-
-      return null;
+        DateNew.toISOString().split('T')[0]
+      );
     });
   }
 
@@ -164,9 +179,10 @@ export class CalendarService {
       this.selectedDay = selectedDate.value;
 
       // GetExameForDate to filter exams for selected date
-      const examsForSelectedDate = this.GetExameForDate(
+      this.SelectedExamesForTheDay = this.GetExameForDate(
         this.selectedDay,
       );
+      
       this.examsPopup = true;
   }
 }
