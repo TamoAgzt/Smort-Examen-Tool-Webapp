@@ -251,6 +251,8 @@ header .calendar-current-date {
   border-radius: 600px 0 0 100px;
 }
 
-.Exames {
-  background-color: aqua;
+.Exames::before {
+  // background: var(--citroengeel100);
+  border: 8px solid var(--citroengeel100);
+  border-radius: 50%;
 }
