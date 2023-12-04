@@ -33,12 +33,12 @@ export class FormComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public calendarService: CalendarService,
-    public router:Router) 
-  {
-    if(Statics.Token == ""){
-      router.navigate(["/login"]);
+    public router: Router
+  ) {
+    if (Statics.Token == '') {
+      router.navigate(['/login']);
     }
-    
+
     let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
@@ -74,7 +74,8 @@ export class FormComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const data: ExamSchedule[] = await this.calendarService.GetData();
     this.calendarService.manipulate();
   }
 
