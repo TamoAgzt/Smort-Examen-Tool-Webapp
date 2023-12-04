@@ -249,3 +249,14 @@ header .calendar-current-date {
   width: 60%;
   margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 760px) {
+  .calendar-container {
+    width: 100%;
+  }
+
+  .calendar-body,
+  ul {
+    padding: 0px;
+  }
+}
