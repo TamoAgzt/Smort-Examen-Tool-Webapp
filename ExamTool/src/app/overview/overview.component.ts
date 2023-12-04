@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Statics } from '../Statics';
 import { EnvVars } from '../Env';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -18,8 +19,11 @@ export class OverviewComponent implements OnInit{
 
   timeofday: string = "Goeie Morgen";
 
-  constructor(public http:HttpClient) 
+  constructor(public http:HttpClient, public router:Router) 
   {
+    if(Statics.Token == ""){
+      router.navigate(["/login"]);
+    }
     
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,

@@ -2,16 +2,16 @@
   <div class="calendar-container">
     <header class="calendar-header">
       <div class="calendar-navigation">
-        <span id="calendar-prev" (click)="prevMonth()">
+        <span id="calendar-prev" (click)="calendarService.prevMonth()">
           <i class="arrow arrow-left"></i>
         </span>
       </div>
       <p class="calendar-current-date">
-        {{ this.year }}<br />
-        {{ this.months[this.month] }}
+        {{ calendarService.year }}<br />
+        {{ calendarService.months[calendarService.month] }}
       </p>
       <div class="calendar-navigation">
-        <span id="calendar-next" (click)="nextMonth()">
+        <span id="calendar-next" (click)="calendarService.nextMonth()">
           <i class="arrow arrow-right"></i>
         </span>
       </div>
@@ -28,24 +28,38 @@
         <li>Za</li>
       </ul>
       <ul class="calendar-dates">
-        <li *ngFor="let date of dates" [class]="date.class">
-          <div (click)="ShowExamsPopup(date)">{{ date.value }}</div>
+        <li *ngFor="let date of calendarService.dates" [class]="date.class">
+          <div (click)="calendarService.ShowExamsPopup(date)">
+            <div>{{ date.value }}</div>
+          </div>
         </li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="popup" *ngIf="examsPopup">
-  <div class="backdrop" (click)="examsPopup = false"></div>
+<div class="popup" *ngIf="calendarService.examsPopup">
+  <div class="backdrop" (click)="calendarService.examsPopup = false"></div>
   <div class="popup-content">
-    <div class="close-popup" (click)="examsPopup = false">Sluiten</div>
-    <div *ngFor="let exam of GetExameForDate(date.value, date.class)">
-      {{ exam.examenItem.naam_Examen }}
+    <div class="close-popup" (click)="calendarService.examsPopup = false">
+      Sluiten
     </div>
-    <div>
-      {{ examsForSelectedDate }}
-      {{ selectedDay }}
+    <div
+      class="exam-info"
+      *ngFor="let exam of calendarService.SelectedExamesForTheDay"
+    >
+      Naam Examen: {{ exam.examenItem.naam_Examen }} <br />
+      Vak: {{ exam.examenItem.vak_Examen }} <br />
+      Toezicht: {{ exam.toezichterhouders[0].naam[0] }}.{{
+        exam.toezichterhouders[0].achternaam
+      }}
+      <br />
+      Datum: {{ exam.agendaItem.tijd_Begin.split("T")[0] }} <br />
+      Tijd: {{ exam.agendaItem.tijd_Begin.split("T")[1] }} <br />
+      Lokaal: {{ exam.lokaal }}
     </div>
   </div>
 </div>
+
+<div class="background-shape red left"></div>
+<div class="background-shape red right"></div>

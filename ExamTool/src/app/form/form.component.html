@@ -4,16 +4,16 @@
     <div class="calendar-container">
       <header class="calendar-header">
         <div class="calendar-navigation">
-          <span id="calendar-prev" (click)="prevMonth()">
+          <span id="calendar-prev" (click)="calendarService.prevMonth()">
             <i class="arrow arrow-left"></i>
           </span>
         </div>
         <p class="calendar-current-date">
-          {{ this.year }}<br />
-          {{ this.months[this.month] }}
+          {{ calendarService.year }}<br />
+          {{ calendarService.months[calendarService.month] }}
         </p>
         <div class="calendar-navigation">
-          <span id="calendar-next" (click)="nextMonth()">
+          <span id="calendar-next" (click)="calendarService.nextMonth()">
             <i class="arrow arrow-right"></i>
           </span>
         </div>
@@ -30,226 +30,286 @@
           <li>Za</li>
         </ul>
         <ul class="calendar-dates">
-          <li *ngFor="let date of dates" [class]="date.class">
-            {{ date.value }}
-            <div *ngFor="let exam of GetExameForDate( date.value, date.class )">
-              {{ exam.examenItem.naam_Examen }}
+          <li *ngFor="let date of calendarService.dates" [class]="date.class">
+            <div (click)="calendarService.ShowExamsPopup(date)">
+              {{ date.value }}
             </div>
           </li>
         </ul>
       </div>
     </div>
   </div>
-</div>
-<div class="container-right">
-  <form class="exam-form">
-    <div class="custom-form center">
-      <div class="form-left">
-        <label for="Image">Afbeelding link</label>
-        <br />
-        <label for="ExamName">Examen Naam</label>
-        <br />
-        <label for="ExamName">Vak</label>
-        <br />
-        <label for="ExamName">Klas</label>
-        <br />
-        <label for="ExamName">Lokaal</label>
-        <br />
-        <label for="ExamName">Toezichthouder</label>
-        <br />
-        <label for="ExamName">beginTijd</label>
-        <br />
-        <label for="ExamName">eindTijd</label>
-        <br />
+
+  <div class="popup" *ngIf="calendarService.examsPopup">
+    <div class="backdrop" (click)="calendarService.examsPopup = false"></div>
+    <div class="popup-content">
+      <div class="close-popup" (click)="calendarService.examsPopup = false">
+        Sluiten
       </div>
-
-      <div class="form-lower">
-        <input
-          id="Image"
-          type="text"
-          [(ngModel)]="Image"
-          name="Image"
-          title="Afbeelding URL"
-          placeholder="Afbeelding URL"
-        />
+      <div
+        class="exam-info"
+        *ngFor="let exam of calendarService.SelectedExamesForTheDay"
+      >
+        Naam Examen: {{ exam.examenItem.naam_Examen }} <br />
+        Vak: {{ exam.examenItem.vak_Examen }} <br />
+        Toezicht: {{ exam.toezichterhouders[0].naam[0] }}.{{
+          exam.toezichterhouders[0].achternaam
+        }}
         <br />
-        <input
-          id="ExamName"
-          type="text"
-          [(ngModel)]="ExamenInplannen.naam_Examen"
-          name="ExamName"
-          title="Examen Naam"
-          placeholder="Examen Naam"
-        />
-        <br />
-        <input
-          id="Subject"
-          type="text"
-          [(ngModel)]="ExamenInplannen.vak_Examen"
-          name="Subject"
-          title="Vak"
-          placeholder="Vak"
-        />
-
-        <br />
-
-        <select [(ngModel)]="ExamenInplannen.klas_Id" name="ExamenInplannen.klas_Id">
-          <option *ngFor="let Klas of klasses" [value]="Klas.Id">
-            {{ Klas.Naam }}
-          </option>
-        </select>
-
-        <a
-          class="form-plus form-edit"
-          aria-label="Add class"
-          (click)="ToggleAddClass()"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-          </svg>
-        </a>
-        <a
-          class="form-minus form-edit"
-          aria-label="Remove class room"
-          (click)="RemoveClass()"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M20 14H4V10H20" />
-          </svg>
-        </a>
-
-        <br />
-
-        <select [(ngModel)]="ExamenInplannen.lokaal_Id" name="ExamenInplannen.lokaal_Id">
-          <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
-            {{ lokaal.Lokaal }}
-          </option>
-        </select>
-
-        <a
-          class="form-plus form-edit"
-          aria-label="Add class room"
-          (click)="ToggleAddClassRoom()"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-          </svg>
-        </a>
-        <a
-          class="form-minus form-edit"
-          aria-label="Remove class room"
-          (click)="RemoveClass()"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M20 14H4V10H20" />
-          </svg>
-        </a>
-
-        <br />
-
-        <select
-          [(ngModel)]="ExamenInplannen.toezichthouder_Id"
-          name="ExamenInplannen.toezichthouder_Id"
-        >
-          <option
-            *ngFor="let toezicht of Toezichthouders"
-            [value]="toezicht.Id"
-          >
-            {{ toezicht.Naam }}, {{ toezicht.Achternaam }}
-          </option>
-        </select>
-
-        <br />
-
-        <input
-          id="beginTijd"
-          type="datetime-local"
-          [(ngModel)]="ExamenInplannen.beginTijd"
-          name="Date"
-          title="Datum"
-          placeholder="Datum"
-        />
-        <br />
-        <input
-          id="eindTijd"
-          type="datetime-local"
-          [(ngModel)]="ExamenInplannen.eindTijd"
-          name="datetime"
-          title="Datum"
-          placeholder="Datum"
-        />
+        Datum: {{ exam.agendaItem.tijd_Begin.split("T")[0] }} <br />
+        Tijd: {{ exam.agendaItem.tijd_Begin.split("T")[1] }} <br />
+        Lokaal: {{ exam.lokaal }}
       </div>
     </div>
-
-    <button class="form-button" type="submit" (click)="save()">Opslaan</button>
-  </form>
-</div>
-
-<div class="popup-container" *ngIf="AddPopup">
-  <div class="add-class-container" *ngIf="AddClass">
-    <form class="exam-form">
-      <div class="custom-form center">
-        <div class="form-left">
-          <label for="Klas">Klas</label>
-          <br />
-          <label for="Mentor">Mentor</label>
-          <br />
-        </div>
-
-        <div class="form-lower">
-          <input
-            id="Class"
-            type="text"
-            [(ngModel)]="ClassData.naam"
-            name="Klas"
-            title="Klas"
-            placeholder="Klas"
-          />
-          <br />
-          <input
-            id="Mentor"
-            type="text"
-            [(ngModel)]="ClassData.mentor"
-            name="Mentor"
-            title="Mentor"
-            placeholder="Mentor"
-          />
-        </div>
-      </div>
-
-      <button class="form-button" type="submit" (click)="SaveClass()">
-        Opslaan
-      </button>
-      <br />
-      <a (click)="CancelAdding()">Annuleren</a>
-    </form>
   </div>
 
-  <div class="add-classroom-container" *ngIf="AddClassRoom">
+  <div class="container-right">
     <form class="exam-form">
       <div class="custom-form center">
         <div class="form-left">
+          <label for="Image">Afbeelding link</label>
+          <br />
+          <label for="ExamName">Examen Naam</label>
+          <br />
+          <label for="ExamName">Vak</label>
+          <br />
+          <label for="ExamName">Klas</label>
+          <br />
           <label for="ExamName">Lokaal</label>
           <br />
+          <label for="ExamName">Toezichthouder</label>
+          <br />
+          <label for="ExamName">beginTijd</label>
+          <br />
+          <label for="ExamName">eindTijd</label>
+          <br />
         </div>
 
         <div class="form-lower">
           <input
-            id="ClassRoom"
+            id="Image"
             type="text"
-            [(ngModel)]="NewLokaal"
-            name="Lokaal"
-            title="Klas lokaal"
-            placeholder="Klas lokaal"
+            [(ngModel)]="Image"
+            name="Image"
+            title="Afbeelding URL"
+            placeholder="Afbeelding URL"
+          />
+          <br />
+          <input
+            id="ExamName"
+            type="text"
+            [(ngModel)]="ExamenInplannen.naam_Examen"
+            name="ExamName"
+            title="Examen Naam"
+            placeholder="Examen Naam"
+          />
+          <br />
+          <input
+            id="Subject"
+            type="text"
+            [(ngModel)]="ExamenInplannen.vak_Examen"
+            name="Subject"
+            title="Vak"
+            placeholder="Vak"
+          />
+
+          <br />
+
+          <select
+            [(ngModel)]="ExamenInplannen.klas_Id"
+            name="ExamenInplannen.klas_Id"
+          >
+            <option *ngFor="let Klas of klasses" [value]="Klas.Id">
+              {{ Klas.Naam }}
+            </option>
+          </select>
+
+          <a
+            class="form-plus form-edit"
+            aria-label="Add class"
+            (click)="ToggleAddClass()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+            </svg>
+          </a>
+          <a
+            class="form-minus form-edit"
+            aria-label="Remove class room"
+            (click)="RemoveClass()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 14H4V10H20" />
+            </svg>
+          </a>
+
+          <br />
+
+          <select
+            [(ngModel)]="ExamenInplannen.lokaal_Id"
+            name="ExamenInplannen.lokaal_Id"
+          >
+            <option *ngFor="let lokaal of lokaal" [value]="lokaal.Id">
+              {{ lokaal.Lokaal }}
+            </option>
+          </select>
+
+          <a
+            class="form-plus form-edit"
+            aria-label="Add class room"
+            (click)="ToggleAddClassRoom()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+            </svg>
+          </a>
+          <a
+            class="form-minus form-edit"
+            aria-label="Remove class room"
+            (click)="RemoveClass()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20 14H4V10H20" />
+            </svg>
+          </a>
+
+          <br />
+
+          <select
+            [(ngModel)]="ExamenInplannen.toezichthouder_Id"
+            name="ExamenInplannen.toezichthouder_Id"
+          >
+            <option
+              *ngFor="let toezicht of Toezichthouders"
+              [value]="toezicht.Id"
+            >
+              {{ toezicht.Naam }}, {{ toezicht.Achternaam }}
+            </option>
+          </select>
+
+          <br />
+
+          <input
+            id="beginTijd"
+            type="datetime-local"
+            [(ngModel)]="ExamenInplannen.beginTijd"
+            name="Date"
+            title="Datum"
+            placeholder="Datum"
+          />
+          <br />
+          <input
+            id="eindTijd"
+            type="datetime-local"
+            [(ngModel)]="ExamenInplannen.eindTijd"
+            name="datetime"
+            title="Datum"
+            placeholder="Datum"
           />
         </div>
       </div>
 
-      <button class="form-button" type="submit" (click)="SaveClassRoom()">
+      <button class="form-button" type="submit" (click)="save()">
         Opslaan
       </button>
-      <br />
-      <a class="cancel" (click)="CancelAdding()">Annuleren</a>
     </form>
   </div>
+
+  <div class="popup-container" *ngIf="AddPopup">
+    <div class="add-class-container" *ngIf="AddClass">
+      <form class="exam-form">
+        <div class="custom-form center">
+          <div class="form-left">
+            <label for="Klas">Klas</label>
+            <br />
+            <label for="Mentor">Mentor</label>
+            <br />
+          </div>
+
+          <div class="form-lower">
+            <input
+              id="Class"
+              type="text"
+              [(ngModel)]="ClassData.naam"
+              name="Klas"
+              title="Klas"
+              placeholder="Klas"
+            />
+            <br />
+            <input
+              id="Mentor"
+              type="text"
+              [(ngModel)]="ClassData.mentor"
+              name="Mentor"
+              title="Mentor"
+              placeholder="Mentor"
+            />
+          </div>
+        </div>
+
+        <button class="form-button" type="submit" (click)="SaveClass()">
+          Opslaan
+        </button>
+        <br />
+        <a (click)="CancelAdding()">Annuleren</a>
+      </form>
+    </div>
+
+    <div class="add-classroom-container" *ngIf="AddClassRoom">
+      <form class="exam-form">
+        <div class="custom-form center">
+          <div class="form-left">
+            <label for="ExamName">Lokaal</label>
+            <br />
+          </div>
+
+          <div class="form-lower">
+            <input
+              id="ClassRoom"
+              type="text"
+              [(ngModel)]="NewLokaal"
+              name="Lokaal"
+              title="Klas lokaal"
+              placeholder="Klas lokaal"
+            />
+          </div>
+        </div>
+
+        <button class="form-button" type="submit" (click)="SaveClassRoom()">
+          Opslaan
+        </button>
+        <br />
+        <a class="cancel" (click)="CancelAdding()">Annuleren</a>
+      </form>
+    </div>
+  </div>
+
+  <div class="notifier" *ngIf="notifPopUp">
+    <svg
+      *ngIf="statusSuccess"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="sign"
+      fill="green"
+    >
+      <path
+        d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+      />
+    </svg>
+    <svg
+      *ngIf="statusFail"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="sign"
+      fill="red"
+    >
+      <path
+        d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z"
+      />
+    </svg>
+    <p>{{ notiffication }}</p>
+  </div>
+
+  <div class="background-shape red left"></div>
+  <div class="background-shape red right"></div>
 </div>
