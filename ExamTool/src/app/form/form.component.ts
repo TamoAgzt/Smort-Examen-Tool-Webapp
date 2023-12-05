@@ -27,7 +27,6 @@ export class FormComponent implements OnInit {
   klasses: any;
   lokaal: any;
 
-  Image: string = '';
   ResponseData: ExamSchedule[] | undefined;
 
   constructor(

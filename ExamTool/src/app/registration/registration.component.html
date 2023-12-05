@@ -5,28 +5,27 @@
       <label for="Achternaam">Achternaam</label> <br />
       <label for="Email">Email</label> <br />
       <label for="Password">Wachtwoord</label> <br />
-      <label for="Password">SelectKlass</label> <br />
-
+      <label for="data.klass">Selecteer klas</label> <br />
     </div>
     <div class="form-right">
-        <input
-          id="Voornaam"
-          type="Voornaam"
-          [(ngModel)]="data.naam"
-          name="Voornaam"
-          title="Voornaam"
-          placeholder="Voornaam"
-        />
-      <br />     
-       <input
-          id="Achternaam"
-          type="Achternaam"
-          [(ngModel)]="data.achternaam"
-          name="Achternaam"
-          title="Achternaam"
-          placeholder="Achternaam"
-        />
-    <br />
+      <input
+        id="Voornaam"
+        type="Voornaam"
+        [(ngModel)]="data.naam"
+        name="Voornaam"
+        title="Voornaam"
+        placeholder="Voornaam"
+      />
+      <br />
+      <input
+        id="Achternaam"
+        type="Achternaam"
+        [(ngModel)]="data.achternaam"
+        name="Achternaam"
+        title="Achternaam"
+        placeholder="Achternaam"
+      />
+      <br />
 
       <input
         id="Email"
@@ -45,16 +44,16 @@
         name="Password"
         title="Wachtwoord"
         placeholder="Wachtwoord"
-      />    <br />
+      />
+      <br />
 
-      <select  [(ngModel)]="data.klass" name="data.klass" >
-        <option *ngFor="let MentorKlas of Klasses" [value]="MentorKlas.Naam">{{MentorKlas.Naam}}</option>
+      <select [(ngModel)]="data.klass" name="data.klass">
+        <option *ngFor="let MentorKlas of Klasses" [value]="MentorKlas.Naam">
+          {{ MentorKlas.Naam }}
+        </option>
       </select>
-      
     </div>
     <br />
-
-    
   </div>
 
   <button class="form-button" type="submit" (click)="SignUp()">
