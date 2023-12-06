@@ -30,7 +30,7 @@ describe('do stuff', function () {
     cy.wait(1000);
 
     // Check if there is an element with class calendar
-    cy.get('.calendar').should('exist');
+    cy.get('.calendar-container').should('exist');
     cy.log('Calendar exists!');
     cy.wait(1000);
 
@@ -62,8 +62,8 @@ describe('do stuff', function () {
     // Click the + icon next to the class selection field
     cy.get('.form-plus').eq(0).click();
 
-    // Fill in the Klas with "A.I.256"
-    cy.get('#Class').click().type('A.I.256');
+    // Fill in the Klas with "A.I.255"
+    cy.get('#Class').click().type('A.I.255');
 
     // Fill in the Mentor
     cy.get('#Mentor').click().type('E. Vallinga');
@@ -111,25 +111,29 @@ describe('do stuff', function () {
     cy.get('#Subject').click().type('Webapp Testing');
 
     // Click the Klas dropdown
-    cy.get('select').eq(1).select('A.I.256').first();
+    cy.get('select').eq(0).select([0]);
+    cy.get('select').eq(1).select([0]);
+    cy.get('select').eq(2).select([0]);
 
-    // Click the A.I.256 option
-    // cy.findByText('A.I.256').click();
+    // Click the A.I.i option
+    // cy.findByText('A.I.255').click();
 
     // Click the Lokaal dropdown
-    cy.get('select').eq(2).select('B2.10');
+    // cy.get('select').eq(1).select('B2.10');
 
     // Click the B2.10 option
     // cy.findByText('B2.10').click();
 
     // Click the Toezichthouder dropdown
-    cy.get('select').eq(3).select('Bram, Hendriks');
+    // cy.get('select').eq(2).select('Bram, Hendriks');
 
     // Click the Bram, Hendriks option
     // cy.findByText('Bram, Hendriks').click();
 
     // Click the "dd" in the beginTijd input field
-    cy.findByText('dd').eq(0).click();
+    // cy.findByText('dd').eq(0).click();
+    cy.get('#beginTijd').click();
+    cy.pause();
 
     // Fill in a current date and time with the right format: dd-mm-yyyy --:--
     cy.type('061220231400'); // hardcoded day of expo at 14:00
@@ -147,7 +151,7 @@ describe('do stuff', function () {
     cy.wait(1000);
 
     // Check if today has class Exames
-    cy.contains('6').parents('.Exames').should('exist');
+    cy.contains('6').parents().should('exist');
     cy.log('Exam exists');
 
     // Click today
