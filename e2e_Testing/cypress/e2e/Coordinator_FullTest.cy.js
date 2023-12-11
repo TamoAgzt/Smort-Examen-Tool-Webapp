@@ -152,11 +152,13 @@ describe('do stuff', function () {
 
     // Check if today has class Exames
     cy.contains('6').parents().should('exist');
+
     cy.log('Exam exists');
 
     // Click today
+    cy.wait(1000);
     cy.contains('6').click();
-
+    cy.wait(1000);
     // Check if exam with name "Cypress 101" exists
     cy.findByText('Cypress 101').should('exist');
   });
