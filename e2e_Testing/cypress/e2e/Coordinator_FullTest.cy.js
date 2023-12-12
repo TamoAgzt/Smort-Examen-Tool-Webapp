@@ -5,6 +5,9 @@
 // Pre-conditions:
 // There must be 1 existing coordinator account
 // There must be 1 existing teacher
+before(function () {
+  cy.fixture('exam.json').as('TestData');
+});
 
 describe('visit site', function () {
   it('Visit site', function () {
@@ -17,18 +20,18 @@ describe('do stuff', function () {
 
   it('Login existing user via login page', function () {
     // Fill in the user's email for a coordinator account
-    cy.get('#Email').click().type('root@vistacollege.nl');
+    cy.get('#Email').click().type(this.TestData.User.Coord.Email);
 
     // Fill in the user's password for a coordinator account
-    cy.get('#Password').click().type('root');
+    cy.get('#Password').click().type(this.TestData.User.Coord.Password);
 
     // Click Inloggen
-    cy.findByText('Inloggen').click();
+    cy.findByText(this.TestData.Button.LogIn).click();
   });
 
   it('Can switch between overview and calendar using buttons', function () {
     // Click Kalender
-    cy.findByText('Kalender').click();
+    cy.findByText(this.TestData.Button.Calendar).click();
     cy.wait(1000);
 
     // Check if there is an element with class calendar
@@ -37,7 +40,7 @@ describe('do stuff', function () {
     cy.wait(1000);
 
     // Click Overzicht
-    cy.findByText('Overzicht').click();
+    cy.findByText(this.TestData.Button.Overview).click();
     cy.wait(1000);
   });
 
@@ -59,22 +62,22 @@ describe('do stuff', function () {
     cy.get('.form-plus').eq(0).click();
 
     // Click Annuleren
-    cy.findByText('Annuleren').click();
+    cy.findByText(this.TestData.Button.Cancel).click();
 
     // Click the + icon next to the class selection field
     cy.get('.form-plus').eq(0).click();
 
     // Fill in the Klas with "A.I.255"
-    cy.get('#Class').click().type('A.I.255');
+    cy.get('#Class').click().type(this.TestData.PopupFiller.Class);
 
     // Fill in the Mentor
-    cy.get('#Mentor').click().type('E. Vallinga');
+    cy.get('#Mentor').click().type(this.TestData.PopupFiller.Mentor);
 
     // Click Opslaan
-    cy.findAllByText('Opslaan').eq(1).click();
+    cy.findAllByText(this.TestData.Button.Save).eq(1).click();
 
     // Click Kalender
-    cy.findByText('Kalender').click();
+    cy.findByText(this.TestData.Button.Calendar).click();
     cy.wait(1000);
   });
 
@@ -86,19 +89,19 @@ describe('do stuff', function () {
     cy.get('.form-plus').eq(1).click();
 
     // Click Annuleren
-    cy.findByText('Annuleren').click();
+    cy.findByText(this.TestData.Button.Cancel).click();
 
     // Click the + icon next to the classroom selection field
     cy.get('.form-plus').eq(1).click();
 
     // Fill in the Lokaal
-    cy.get('#ClassRoom').click().type('B2.10');
+    cy.get('#ClassRoom').click().type(this.TestData.PopupFiller.ClassRoom);
 
     // Click Opslaan
-    cy.findAllByText('Opslaan').eq(1).click();
+    cy.findAllByText(this.TestData.Button.Save).eq(1).click();
 
     // Click Kalender
-    cy.findByText('Kalender').click();
+    cy.findByText(this.TestData.Button.Calendar).click();
     cy.wait(1000);
   });
 
@@ -107,10 +110,10 @@ describe('do stuff', function () {
     cy.get('.add-button').click();
 
     // Fill in the Examen Naam with "Cypress 101"
-    cy.get('#ExamName').click().type('Cypress 101');
+    cy.get('#ExamName').click().type(this.TestData.Exam.Name);
 
     // Fill in the Vak with "Webapp Testing"
-    cy.get('#Subject').click().type('Webapp Testing');
+    cy.get('#Subject').click().type(this.TestData.Exam.Subject);
 
     // Click the Klas dropdown
     cy.get('select').eq(0).select([0]);
@@ -144,13 +147,13 @@ describe('do stuff', function () {
 
     // Click Opslaan
     cy.intercept('http://devilskey.nl:7234/ExamenInPlannen').as('SavingExam');
-    cy.findByText('Opslaan').click();
+    cy.findByText(this.TestData.Button.Save).click();
     cy.wait('@SavingExam');
   });
 
   it('Check if exam is visible on calendar page', function () {
     // Click Kalender
-    cy.findByText('Kalender').click();
+    cy.findByText(this.TestData.Button.Calendar).click();
     cy.wait(1000);
 
     // Check if today has class Exames
@@ -161,6 +164,6 @@ describe('do stuff', function () {
     // Click today
     cy.contains(dag).click();
     // Check if exam with name "Cypress 101" exists
-    cy.contains('Cypress 101').should('exist');
+    cy.contains(this.TestData.Exam.Name).should('exist');
   });
 });
