@@ -13,6 +13,8 @@ describe('visit site', function () {
 });
 
 describe('do stuff', function () {
+  let dag = '12';
+
   it('Login existing user via login page', function () {
     // Fill in the user's email for a coordinator account
     cy.get('#Email').click().type('root@vistacollege.nl');
@@ -130,19 +132,20 @@ describe('do stuff', function () {
     // Click the Bram, Hendriks option
     // cy.findByText('Bram, Hendriks').click();
 
-    // Click the "dd" in the beginTijd input field
-    // cy.findByText('dd').eq(0).click();
-    cy.get('#beginTijd').click();
-    cy.pause();
+    // Click the beginTijd input field and fill in a date and time with 2023-12-12T12:30 (change for future date or make dynamic)
+    cy.get('#beginTijd')
+      .click()
+      .type('2023-12-' + dag + 'T12:30');
 
-    // Fill in a current date and time with the right format: dd-mm-yyyy --:--
-    cy.type('061220231400'); // hardcoded day of expo at 14:00
+    // Click the eindTijd input field and fill in a date and time with 2023-12-12T13:30 (change for future date or make dynamic)
+    cy.get('#eindTijd')
+      .click()
+      .type('2023-12-' + dag + 'T13:30');
 
-    // Click the "dd" in the eindTijd input field
-    cy.findByText('dd').eq(1).click();
-
-    // Fill in a current date and time with the right format: dd-mm-yyyy --:--
-    cy.type('061220231420'); // hardcoded day of expo at 14:20
+    // Click Opslaan
+    cy.intercept('http://devilskey.nl:7234/ExamenInPlannen').as('SavingExam');
+    cy.findByText('Opslaan').click();
+    cy.wait('@SavingExam');
   });
 
   it('Check if exam is visible on calendar page', function () {
@@ -151,15 +154,13 @@ describe('do stuff', function () {
     cy.wait(1000);
 
     // Check if today has class Exames
-    cy.contains('6').parents().should('exist');
+    cy.findByText(dag).parents().should('exist');
 
     cy.log('Exam exists');
 
     // Click today
-    cy.wait(1000);
-    cy.contains('6').click();
-    cy.wait(1000);
+    cy.contains(dag).click();
     // Check if exam with name "Cypress 101" exists
-    cy.findByText('Cypress 101').should('exist');
+    cy.contains('Cypress 101').should('exist');
   });
 });

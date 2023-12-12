@@ -1,0 +1,33 @@
+{
+  "Button": {
+    "Calendar": "Kalender",
+    "Overview": "Overzicht",
+    "LogOut": "Log Out",
+    "Cancel": "Annuleren",
+    "LogIn": "Inloggen",
+    "Save": "Opslaan"
+  },
+  "User": {
+    "Root": {
+      "Email": "root@vistacollege.nl",
+      "Password": "root"
+    },
+    "Student": {
+      "Email": "m.offermans@vistacollege.nl",
+      "Password": "princess"
+    },
+    "Teacher": {
+      "Email": "123456@vistacollege.nl",
+      "Password": "smashword"
+    }
+  },
+  "PopupFiller": {
+    "Class": "A.I.255",
+    "Mentor": "E. Vallinga",
+    "ClassRoom": "B2.10"
+  },
+  "Exam": {
+    "Name": "Cypress 101",
+    "Subject": "Webapp Testing"
+  }
+}
