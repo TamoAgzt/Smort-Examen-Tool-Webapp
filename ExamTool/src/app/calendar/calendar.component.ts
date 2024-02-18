@@ -3,6 +3,7 @@ import { CalendarService } from '../Objects/calendar.service';
 import { Router } from '@angular/router';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,8 @@ import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 })
 export class CalendarComponent implements OnInit {
 SelectedExamesForTheDay: any;
+api:string = environment.apiUrl;
+
   constructor(public calendarService: CalendarService, public router:Router) 
   {
     if(Statics.Token == ""){
