@@ -3,7 +3,7 @@ import { CalendarService } from '../Objects/calendar.service';
 import { Router } from '@angular/router';
 import { Statics } from '../Statics';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
-import { environment } from 'src/environments/environment.prod';
+import { EnvVars } from '../Env';
 
 @Component({
   selector: 'app-calendar',
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class CalendarComponent implements OnInit {
 SelectedExamesForTheDay: any;
-api:string = environment.apiUrl;
+api:string = EnvVars.Api;
 
   constructor(public calendarService: CalendarService, public router:Router) 
   {
