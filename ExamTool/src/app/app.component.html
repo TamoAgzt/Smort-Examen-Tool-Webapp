@@ -111,7 +111,7 @@
     </svg>
   </a>
 
-  <div class="desktop" *ngIf="!addingRol">
+  <div class="desktop" *ngIf="addingRol">
     <a
       *ngIf="!addingExam"
       class="add-button-mobile"
@@ -127,7 +127,7 @@
 </div>
 <router-outlet></router-outlet>
 <div class="desktop" *ngIf="!onLoginPage">
-  <div class="desktop" *ngIf="!addingRol">
+  <div class="desktop" *ngIf="addingRol">
     <a
       *ngIf="!addingExam"
       class="add-button"

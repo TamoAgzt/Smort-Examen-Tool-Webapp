@@ -34,7 +34,7 @@ export class AppComponent {
 
   checkLocalStorage() {
     this.addingRol =
-      window.localStorage.getItem('Vista.Examen.Rol.Planner') == '1';
+      window.localStorage.getItem('Vista.Examen.Rol.Planner') == '3';
     console.log(this.addingRol);
   }
 
