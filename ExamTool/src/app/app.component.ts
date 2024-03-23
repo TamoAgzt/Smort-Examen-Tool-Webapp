@@ -10,6 +10,8 @@ import { Statics } from './Statics';
 export class AppComponent {
   staticData: typeof Statics = Statics;
 
+  addingRol: boolean;
+
   constructor(private router: Router) {
     router.events.subscribe((val) => {
       if (!(val instanceof NavigationEnd)) {
@@ -21,6 +23,9 @@ export class AppComponent {
 
       this.addingExam = router.url == '/form';
     });
+
+    this.addingRol =
+      window.localStorage.getItem('Vista.Examen.Rol.Planner') == '1';
   }
 
   title = 'ExamTool';
