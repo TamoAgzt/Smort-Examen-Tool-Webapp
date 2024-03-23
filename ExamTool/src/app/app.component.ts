@@ -21,6 +21,8 @@ export class AppComponent {
 
       this.addingExam = router.url == '/form';
     });
+
+    this.checkLocalStorage();
   }
 
   title = 'ExamTool';
