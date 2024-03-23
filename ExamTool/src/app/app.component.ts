@@ -21,6 +21,8 @@ export class AppComponent {
 
       this.addingExam = router.url == '/form';
     });
+
+    this.checkLocalStorage();
   }
 
   title = 'ExamTool';
@@ -30,6 +32,13 @@ export class AppComponent {
 
   Hamburger: boolean = false;
   onCalendarPage: boolean = false;
+  addingRol: boolean = false;
+
+  checkLocalStorage() {
+    this.addingRol =
+      window.localStorage.getItem('Vista.Examen.Rol.Planner') == '3';
+    console.log(this.addingRol);
+  }
 
   toggleOverview() {
     if (this.onCalendarPage) {

@@ -99,17 +99,6 @@
   </a>
 
   <a
-    class="add-button-mobile"
-    routerLink="/form"
-    routerLinkActive="activebutton"
-    ariaCurrentWhenActive="page"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-    </svg>
-  </a>
-
-  <a
     class="button mobile"
     routerLink="/login"
     routerLinkActive="activebutton"
@@ -121,12 +110,10 @@
       />
     </svg>
   </a>
-</div>
-<router-outlet></router-outlet>
-<div class="desktop" *ngIf="!onLoginPage">
+
   <a
-    *ngIf="!addingExam"
-    class="add-button"
+    *ngIf="!addingExam && addingRol"
+    class="add-button-mobile"
     routerLink="/form"
     routerLinkActive="activebutton"
     ariaCurrentWhenActive="page"
@@ -135,4 +122,20 @@
       <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
     </svg>
   </a>
+</div>
+<router-outlet></router-outlet>
+<div *ngIf="!onLoginPage">
+  <div class="desktop" *ngIf="addingRol">
+    <a
+      *ngIf="!addingExam"
+      class="add-button"
+      routerLink="/form"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+      </svg>
+    </a>
+  </div>
 </div>

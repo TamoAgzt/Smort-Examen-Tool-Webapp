@@ -4,6 +4,7 @@ import { EnvVars } from '../Env';
 import { Router } from '@angular/router';
 import { Statics } from '../Statics';
 import { Login } from '../Objects/TokenLogin';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,11 @@ export class LoginComponent {
     wachtwoord: '',
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private appComponent: AppComponent
+  ) {}
 
   LogIn() {
     this.http
@@ -29,6 +34,7 @@ export class LoginComponent {
           window.localStorage.setItem('Vista.Examen.Rol.Planner', data.rol);
 
           this.router.navigate(['/']);
+          this.appComponent.checkLocalStorage();
           return;
         }
         console.log('Failed');
