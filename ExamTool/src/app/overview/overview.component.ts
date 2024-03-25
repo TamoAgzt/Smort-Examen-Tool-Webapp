@@ -6,43 +6,47 @@ import { EnvVars } from '../Env';
 import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 import { Route, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
 })
-export class OverviewComponent implements OnInit{
-
+export class OverviewComponent implements OnInit {
+  // Declare variables
   Accounts: any;
   Exams: ExamSchedule[] | undefined;
 
-  timeofday: string = "Goeie Morgen";
+  timeofday: string = 'Goeie Morgen';
 
-  constructor(public http:HttpClient, public router:Router) 
-  {
-    if(Statics.Token == ""){
-      router.navigate(["/login"]);
+  constructor(public http: HttpClient, public router: Router) {
+    // if unauthorized, login
+    if (Statics.Token == '') {
+      router.navigate(['/login']);
     }
-    
+
+    // Declare authorized header locally
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
 
-    this.http.get(EnvVars.Api + "GetUserData", { headers: header }).subscribe((data:any) => {
-      this.Accounts = data[0];
+    // load user data
+    this.http
+      .get(EnvVars.Api + 'GetUserData', { headers: header })
+      .subscribe((data: any) => {
+        // Set first account as Accounts
+        this.Accounts = data[0];
+      });
 
-  });
-
-  this.http.get<ExamSchedule[]>(EnvVars.Api + "GetExamesForAweek", { headers: header }).subscribe((data:any) => {
-    this.Exams = data;
-    console.log(data);
-});
+    // Load exams
+    this.http
+      .get<ExamSchedule[]>(EnvVars.Api + 'GetExamesForAweek', {
+        headers: header,
+      })
+      .subscribe((data: any) => {
+        this.Exams = data;
+        console.log(data);
+      });
   }
 
-  ngOnInit(): void {
-
-
-
-  }
+  ngOnInit(): void {}
 }

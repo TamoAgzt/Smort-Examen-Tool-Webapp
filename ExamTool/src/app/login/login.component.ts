@@ -12,6 +12,7 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  // Declare variables
   data = {
     email: '',
     wachtwoord: '',
@@ -23,6 +24,7 @@ export class LoginComponent {
     private appComponent: AppComponent
   ) {}
 
+  // Verify user data via API
   LogIn() {
     this.http
       .post<Login>(EnvVars.Api + 'Login', this.data)

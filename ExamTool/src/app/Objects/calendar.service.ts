@@ -9,9 +9,11 @@ import { ExamSchedule } from '../Objects/ObjectExamenWeek';
 })
 export class CalendarService {
   constructor(private http: HttpClient) {
+    // Load data when script is in use
     this.GetData();
   }
 
+  // Declare variables
   ResponseData: ExamSchedule[] | undefined;
   examsForSelectedDate: ExamSchedule[] | undefined;
 
@@ -70,17 +72,19 @@ export class CalendarService {
           ? 'active'
           : '';
 
-      let Exames:ExamSchedule[] | undefined  = this.GetExameForDate(i);
+      let Exames: ExamSchedule[] | undefined = this.GetExameForDate(i);
 
-
-      if(typeof Exames === 'object')
-        if(Exames.length > 0){
-          isToday += " Exames";
+      // If Exames is an object that has any items, add "Exames" to the day of the exam
+      if (typeof Exames === 'object')
+        if (Exames.length > 0) {
+          isToday += ' Exames';
         }
-          
+
+      // add the Exames class to all dates in the calendar
       this.dates.push({ value: i, class: isToday });
     }
 
+    // Set inactive days as inactive
     for (let i = dayend; i < 6; i++) {
       this.dates.push({ value: i - dayend + 1, class: 'inactive' });
     }
@@ -107,13 +111,12 @@ export class CalendarService {
     // Call the manipulate function to
     // update the calendar display
     const data: ExamSchedule[] = await this.GetData();
-     this.manipulate();
+    this.manipulate();
   }
 
   async nextMonth() {
-    
     this.month += 1;
-    
+
     if (this.month < 0 || this.month > 11) {
       // Set the date to the first day of the
       // month with the new year
@@ -134,34 +137,38 @@ export class CalendarService {
 
     const data: ExamSchedule[] = await this.GetData();
     this.manipulate();
-
   }
 
   GetData(): Promise<ExamSchedule[]> {
+    // Declare authorized header locally
     const header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });
-  
+
+    // Load exams for all months
     return new Promise<ExamSchedule[]>((resolve, reject) => {
       this.http
-        .get<ExamSchedule[]>(EnvVars.Api + `GetExamesForAMonth?month=${this.month + 1}&year=${this.year}`, {
-          headers: header,
-        })
+        .get<ExamSchedule[]>(
+          EnvVars.Api +
+            `GetExamesForAMonth?month=${this.month + 1}&year=${this.year}`,
+          {
+            headers: header,
+          }
+        )
         .subscribe(
           (data: ExamSchedule[]) => {
             this.ResponseData = data;
             console.log(data);
-            console.log("GetData Done");
-            resolve(data);  // Resolve the promise with the data
+            console.log('GetData Done');
+            resolve(data); // Resolve the promise with the data
           },
           (error) => {
-            console.error("Error in API call:", error);
-            reject(error);  // Reject the promise with the error
+            console.error('Error in API call:', error);
+            reject(error); // Reject the promise with the error
           }
         );
     });
   }
-  
 
   GetExameForDate(date: number) {
     let DateNew = new Date(this.year, this.month, date + 1);
@@ -175,14 +182,12 @@ export class CalendarService {
 
   ShowExamsPopup(selectedDate: { value: number }) {
     // Check if selected date is active
-      // selectedDate.value to get date
-      this.selectedDay = selectedDate.value;
+    // selectedDate.value to get date
+    this.selectedDay = selectedDate.value;
 
-      // GetExameForDate to filter exams for selected date
-      this.SelectedExamesForTheDay = this.GetExameForDate(
-        this.selectedDay,
-      );
-      
-      this.examsPopup = true;
+    // GetExameForDate to filter exams for selected date
+    this.SelectedExamesForTheDay = this.GetExameForDate(this.selectedDay);
+
+    this.examsPopup = true;
   }
 }

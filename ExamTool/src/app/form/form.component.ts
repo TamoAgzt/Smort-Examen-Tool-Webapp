@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.scss', '../Objects/calendar.scss'],
 })
 export class FormComponent implements OnInit {
+  // Declare variables
   ExamenInplannen = {
     toezichthouder_Id: 0,
     naam_Examen: '',
@@ -34,10 +35,12 @@ export class FormComponent implements OnInit {
     public calendarService: CalendarService,
     public router: Router
   ) {
+    // if unauthorized, login
     if (Statics.Token == '') {
       router.navigate(['/login']);
     }
 
+    // Declare authorized header locally
     let header = new HttpHeaders({
       Authorization: `Bearer ${Statics.Token}`,
     });

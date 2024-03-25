@@ -10,6 +10,7 @@ import { Klas } from '../Objects/KlasObject';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  // Declare variables
   data = {
     naam: '',
     achternaam: '',
@@ -22,6 +23,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  // Load all calsses
   ngOnInit(): void {
     this.http
       .get<Klas>(EnvVars.Api + 'SelectAllKlasses')
@@ -31,6 +33,7 @@ export class RegistrationComponent implements OnInit {
       });
   }
 
+  // Create user via API
   SignUp() {
     console.log(this.data.klass);
     this.http

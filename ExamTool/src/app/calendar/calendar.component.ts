@@ -11,13 +11,14 @@ import { EnvVars } from '../Env';
   styleUrls: ['./calendar.component.scss', '../Objects/calendar.scss'],
 })
 export class CalendarComponent implements OnInit {
-SelectedExamesForTheDay: any;
-api:string = EnvVars.Api;
+  // Declare variables
+  SelectedExamesForTheDay: any;
+  api: string = EnvVars.Api;
 
-  constructor(public calendarService: CalendarService, public router:Router) 
-  {
-    if(Statics.Token == ""){
-      router.navigate(["/login"]);
+  constructor(public calendarService: CalendarService, public router: Router) {
+    // if unauthorized, login
+    if (Statics.Token == '') {
+      router.navigate(['/login']);
     }
   }
 
